@@ -1,0 +1,153 @@
+2025-12-17 15:36:59 - Sesión iniciada correctamente.
+2025-12-17 15:37:23 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 15:38:12 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 15:39:21 - ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas - OK
+2025-12-17 15:39:42 - ZR_ZENER REDES - Movs. proyectos - OK
+2025-12-17 15:40:43 - ZR_ZENER REDES - Movs. proyectos - OK
+2025-12-17 15:42:44 - ZR_ZENER REDES - Lista Líneas de Certificación Registradas - OK
+2025-12-17 15:43:58 - ZP_ZENER PLUS - Movs. proyectos - OK
+2025-12-17 15:45:08 - ZP_ZENER PLUS - Movs. proyectos - OK
+2025-12-17 15:47:09 - ZP_ZENER PLUS - Lista Líneas de Certificación Registradas - OK
+2025-12-17 15:49:01 - ZC_ZENER COMUNICACIONES - Movs. proyectos - OK
+2025-12-17 15:52:22 - ZC_ZENER COMUNICACIONES - Movs. proyectos - OK
+2025-12-17 15:55:59 - ERROR CRÍTICO DEL SISTEMA: ('Connection aborted.', ConnectionResetError(10054, 'Se ha forzado la interrupción de una conexión existente por el host remoto', None, 10054, None))
+2025-12-17 15:56:45 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 15:58:37 - ZA_ZENER ALARMAS - Movs. proyectos - ERROR intento 3: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c88e8895
+	0x7ff7c88e88f0
+	0x7ff7c86c165d
+	0x7ff7c8719a33
+	0x7ff7c8719d3c
+	0x7ff7c876df67
+	0x7ff7c876ac97
+	0x7ff7c870ac29
+	0x7ff7c870ba93
+	0x7ff7c8c005f0
+	0x7ff7c8bfaf30
+	0x7ff7c8c19696
+	0x7ff7c8905d94
+	0x7ff7c890ed3c
+	0x7ff7c88f1fb4
+	0x7ff7c88f2165
+	0x7ff7c88d7e92
+	0x7ffcd74d7374
+	0x7ffcd8a7cc91
+
+2025-12-17 15:59:59 - ERROR CRÍTICO SISTEMA: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=143.0.7499.40); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c88e8895
+	0x7ff7c88e88f0
+	0x7ff7c86c165d
+	0x7ff7c86ad202
+	0x7ff7c86d27af
+	0x7ff7c8749a29
+	0x7ff7c876a5c2
+	0x7ff7c870ac29
+	0x7ff7c870ba93
+	0x7ff7c8c005f0
+	0x7ff7c8bfaf30
+	0x7ff7c8c19696
+	0x7ff7c8905d94
+	0x7ff7c890ed3c
+	0x7ff7c88f1fb4
+	0x7ff7c88f2165
+	0x7ff7c88d7e92
+	0x7ffcd74d7374
+	0x7ffcd8a7cc91
+
+2025-12-17 16:00:09 - Carpeta destino C:\ArchivosBC limpiada al inicio del proceso
+2025-12-17 16:01:07 - Carpeta destino C:\ArchivosBC limpiada al inicio del proceso
+2025-12-17 16:02:13 - ERROR CRÍTICO SISTEMA: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=143.0.7499.40); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c88e8895
+	0x7ff7c88e88f0
+	0x7ff7c86c165d
+	0x7ff7c86ad202
+	0x7ff7c86d27af
+	0x7ff7c8749a29
+	0x7ff7c876a5c2
+	0x7ff7c870ac29
+	0x7ff7c870ba93
+	0x7ff7c8c005f0
+	0x7ff7c8bfaf30
+	0x7ff7c8c19696
+	0x7ff7c8905d94
+	0x7ff7c890ed3c
+	0x7ff7c88f1fb4
+	0x7ff7c88f2165
+	0x7ff7c88d7e92
+	0x7ffcd74d7374
+	0x7ffcd8a7cc91
+
+2025-12-17 16:02:15 - Proceso finalizado
+2025-12-17 16:04:35 - Carpeta destino C:\ArchivosBC limpiada al inicio del proceso
+2025-12-17 16:04:41 - Sesión iniciada correctamente
+2025-12-17 16:05:23 - ZA_ZENER ALARMAS - Movs. proyectos - ERROR intento 3: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=143.0.7499.40); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c88e8895
+	0x7ff7c88e88f0
+	0x7ff7c86c165d
+	0x7ff7c86ad202
+	0x7ff7c86d27af
+	0x7ff7c8749a29
+	0x7ff7c876a5c2
+	0x7ff7c870ac29
+	0x7ff7c870ba93
+	0x7ff7c8c005f0
+	0x7ff7c8bfaf30
+	0x7ff7c8c19696
+	0x7ff7c8905d94
+	0x7ff7c890ed3c
+	0x7ff7c88f1fb4
+	0x7ff7c88f2165
+	0x7ff7c88d7e92
+	0x7ffcd74d7374
+	0x7ffcd8a7cc91
+
+2025-12-17 16:05:23 - ERROR CRÍTICO SISTEMA: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c88e8895
+	0x7ff7c88e88f0
+	0x7ff7c86c1465
+	0x7ff7c8709d83
+	0x7ff7c8741ee2
+	0x7ff7c873c500
+	0x7ff7c873b6f0
+	0x7ff7c868b325
+	0x7ff7c8c005f0
+	0x7ff7c8bfaf30
+	0x7ff7c8c19696
+	0x7ff7c8905d94
+	0x7ff7c890ed3c
+	0x7ff7c8689cb8
+	0x7ff7c8d5efb8
+	0x7ffcd74d7374
+	0x7ffcd8a7cc91
+
+2025-12-17 16:05:25 - Proceso finalizado
+2025-12-17 16:14:41 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 16:15:40 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 16:16:48 - ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas - OK
+2025-12-17 16:17:08 - ZR_ZENER REDES - Movs. proyectos - OK
+2025-12-17 16:18:20 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 16:19:08 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 16:20:11 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 16:21:00 - ZA_ZENER ALARMAS - Movs. proyectos - OK
+2025-12-17 16:21:08 - ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas - OK
+2025-12-17 16:21:29 - ZR_ZENER REDES - Movs. proyectos - OK
+2025-12-17 16:22:19 - ZR_ZENER REDES - Movs. proyectos - OK
+2025-12-17 16:23:38 - ZR_ZENER REDES - Lista Líneas de Certificación Registradas - OK
+2025-12-17 16:24:39 - ZP_ZENER PLUS - Movs. proyectos - OK
+2025-12-17 16:26:19 - ZP_ZENER PLUS - Movs. proyectos - OK
