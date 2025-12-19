@@ -36,12 +36,6 @@ def limpiar_nombre_archivo(nombre):
 def escribir_log(mensaje):
     with open(ruta_log, "a", encoding="utf-8") as log:
         log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {mensaje}\n")
-        
-# -- Hora de comienzo
-inicio_proceso = datetime.now()
-print(f"=== INICIANDO PROCESO DE DESCARGAS BC: {inicio_proceso.strftime('%H:%M:%S')} ===")
-escribir_log(f"INICIO PROCESO GLOBAL")        
-       
 
 def realizar_login(driver, wait, usuario, password):
     try:
@@ -132,12 +126,6 @@ try:
     if not realizar_login(driver, wait, usuario, password): sys.exit()
 
     for emp in empresas:
-        
-        #  --  Indicar la hora que descarga
-        inicio_empresa = datetime.now()
-        print(f"\n>>> EMPRESA: {emp} (Inicio: {inicio_empresa.strftime('%H:%M:%S')})")
-        escribir_log(f"Iniciando empresa: {emp}")
-    
         print(f"\n>>> EMPRESA: {emp}")
         emp_url = urllib.parse.quote(emp)
         filtro_csv = filtros_proyectos.get(emp, separador.join(fijos))
@@ -220,14 +208,5 @@ try:
 
 finally:
     driver.quit()
-    # calcular tiempos he indicar fin
-    fin_proceso = datetime.now()
-    duracion_total = fin_proceso - inicio_proceso
-    
-    print("\n" + "="*40)
-    print(f"=== PROCESO FINALIZADO COMPLETAMENTE ===")
-    print(f"Hora fin: {fin_proceso.strftime('%H:%M:%S')}")
-    print(f"DURACIÓN TOTAL: {str(duracion_total).split('.')[0]}")
-    print("="*40)
-    
-    escribir_log(f"EJECUCIÓN FINALIZADA. Duración total: {duracion_total}")
+    print("\n=== PROCESO FINALIZADO COMPLETAMENTE ===")
+    escribir_log("Ejecución finalizada.")
