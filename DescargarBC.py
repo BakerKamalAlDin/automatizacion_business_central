@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import unicodedata
 import time
 import shutil
 import urllib.parse
@@ -7,7 +8,8 @@ import csv
 import sys
 import re
 import threading
-import glob 
+import glob
+import warnings
 import pandas as pd
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
@@ -17,25 +19,50 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Bloqueo para escritura de logs
-log_lock = threading.Lock()
+# Silenciamos el aviso de "FutureWarning" y activamos el nuevo comportamiento de Pandas
+warnings.filterwarnings("ignore", category=FutureWarning)
+pd.set_option('future.no_silent_downcasting', True)
 
-# --- CONFIGURACION DE RUTAS ---
-ruta_usuario_txt = r"C:\ficheros python\usuarioContrase�a.txt"
+# --- CONFIGURACIÓN DE RUTAS ---
+ruta_usuario_txt = r"C:\ficheros python\usuarioContraseña.txt"
+ruta_descarga_txt = r"C:\ficheros python\carpetaChromeDescargas.txt"
 ruta_enlaces_txt = r"C:\ficheros python\enlaces.txt"
 ruta_empresas_txt = r"C:\ficheros python\Empresas.txt"
 ruta_csv_proyectos = r"C:\ficheros python\Proyecto a borrar.csv"
 ruta_log = "log_proceso.txt"
 
+# Rutas Base
 ruta_base_bc = r"C:\ArchivosBC"
-ruta_excel = os.path.join(ruta_base_bc, "Excel")
+ruta_excel_base = os.path.join(ruta_base_bc, "Excel")
 ruta_csv_base = os.path.join(ruta_base_bc, "CSV")
 ruta_errores = os.path.join(ruta_base_bc, "Errores")
-
-# Subcarpetas especificas solicitadas
-dir_movs = os.path.join(ruta_csv_base, "Movs. proyectos")
-dir_certif = os.path.join(ruta_csv_base, "Lista Lineas de Certificacion Registradas")
 dir_base_hilos = r"C:\ficheros python\Temp_Workers"
+
+# Bloqueo para log
+log_lock = threading.Lock()
+
+def limpiar_nombre_archivo(nombre):
+    """Limpia caracteres prohibidos en nombres de carpeta/archivo de Windows."""
+    # Mantenemos espacios y puntos, pero quitamos caracteres ilegales
+    limpio = re.sub(r'[\\/*?:"<>|]', "", nombre)
+    return limpio.strip()
+
+def inicializar_entorno():
+    """Crea la estructura base y limpia temporales."""
+    # Creamos solo las raíces, las subcarpetas se crean dinámicamente
+    for carpeta in [ruta_base_bc, ruta_excel_base, ruta_csv_base, ruta_errores]:
+        os.makedirs(carpeta, exist_ok=True)
+    
+    # Limpieza de temporales de hilos
+    if os.path.exists(dir_base_hilos):
+        try: 
+            shutil.rmtree(dir_base_hilos)
+            time.sleep(1) 
+        except: 
+            pass
+    os.makedirs(dir_base_hilos, exist_ok=True)
+    
+    escribir_log("Entorno preparado.")
 
 def escribir_log(mensaje, consola=False):
     linea = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {mensaje}"
@@ -43,212 +70,320 @@ def escribir_log(mensaje, consola=False):
         try:
             with open(ruta_log, "a", encoding="utf-8") as log:
                 log.write(linea + "\n")
-        except: pass
-    if consola: print(linea)
+        except:
+            pass
+    if consola:
+        print(linea)
 
-def inicializar_entorno():
-    """Crea la estructura de carpetas y limpia temporales."""
-    for carpeta in [ruta_base_bc, ruta_excel, ruta_csv_base, ruta_errores, dir_movs, dir_certif]:
-        os.makedirs(carpeta, exist_ok=True)
-    
-    if os.path.exists(dir_base_hilos):
-        try: 
-            shutil.rmtree(dir_base_hilos)
-            time.sleep(1)
-        except: pass
-    os.makedirs(dir_base_hilos, exist_ok=True)
-    escribir_log("Entorno preparado. Carpetas de clasificacion listas.", consola=True)
+def esperar_pagina_cargada(driver, timeout=40):
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: d.execute_script("return document.readyState") == "complete"
+        )
+        return True
+    except:
+        return False
 
-def archivo_estable(ruta, intentos=5, espera=1):
-    if not os.path.exists(ruta) or ruta.endswith(('.crdownload', '.tmp')):
+def archivo_estable(ruta, intentos=5, espera=2):
+    if ruta.endswith('.crdownload') or ruta.endswith('.tmp'):
         return False
     tam_anterior = -1
-    for _ in range(intentos):
+    for i in range(intentos):
+        if not os.path.exists(ruta):
+            time.sleep(espera)
+            continue
         try:
             tam_actual = os.path.getsize(ruta)
             if tam_actual > 0 and tam_actual == tam_anterior:
-                with open(ruta, "rb"): return True
+                with open(ruta, "rb"): 
+                    return True
             tam_anterior = tam_actual
-        except: pass
+        except:
+            pass
         time.sleep(espera)
     return False
 
 def realizar_login(driver, wait, usuario, password):
-    try:
-        driver.get("https://bc.zener.es/ZENER_BC/")
-        user_field = wait.until(EC.element_to_be_clickable((By.ID, "UserName")))
-        user_field.send_keys(usuario)
-        pass_field = driver.find_element(By.ID, "Password")
-        pass_field.send_keys(password)
-        driver.find_element(By.ID, "submitButton").click()
-        wait.until(EC.url_contains("ZENER_BC"))
-        return True
-    except: return False
+    for intento in range(3):
+        try:
+            driver.get("https://bc.zener.es/ZENER_BC/")
+            if not esperar_pagina_cargada(driver):
+                continue
 
-def procesar_descarga(id_hilo, tarea, empresa, usuario, password, filtros_proyectos):
-    prefijo = tarea['prefijo']
-    nombre_tarea = f"[{empresa} - {prefijo}]"
-    clean_emp = re.sub(r'[\\/*?:"<>|]', "", empresa).replace(' ', '_')
+            user_field = wait.until(EC.element_to_be_clickable((By.ID, "UserName")))
+            user_field.clear()
+            user_field.send_keys(usuario)
+            
+            pass_field = driver.find_element(By.ID, "Password")
+            pass_field.clear()
+            pass_field.send_keys(password)
+            
+            driver.find_element(By.ID, "submitButton").click()
+            wait.until(EC.url_contains("ZENER_BC"))
+            return True
+        except:
+            time.sleep(3)
+            driver.delete_all_cookies()
+            driver.refresh()
+    return False
+
+def procesar_descarga(id_hilo, tarea, empresa, usuario, password, filtros_proyectos, max_intentos=3):
+    # Definimos la categoría basada en el prefijo del enlace (ej: "Movs. proyectos")
+    categoria_raw = tarea['prefijo']
+    categoria_clean = limpiar_nombre_archivo(categoria_raw)
     
-    # Delay inteligente anti-bloqueo para 5 hilos
-    time.sleep((id_hilo % 5) * 2)
+    # Ruta específica para los Excel de esta categoría
+    dir_destino_excel = os.path.join(ruta_excel_base, categoria_clean)
+    os.makedirs(dir_destino_excel, exist_ok=True)
 
-    for intento in range(1, 3):
+    nombre_tarea = f"[{empresa} - {categoria_raw}]"
+    clean_emp = limpiar_nombre_archivo(empresa).replace(' ', '_')
+
+    # Delay escalonado para no saturar el servidor
+    time.sleep(((id_hilo - 1) % 3) * 5)
+
+    for intento in range(1, max_intentos + 1):
         dir_hilo = os.path.join(dir_base_hilos, f"worker_{id_hilo}_{intento}")
         os.makedirs(dir_hilo, exist_ok=True)
-        
+        escribir_log(f"Iniciando {nombre_tarea} (Intento {intento})", consola=True)
+
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--window-size=1920,1080")
         chrome_options.add_experimental_option("prefs", {
             "download.default_directory": dir_hilo,
-            "download.prompt_for_download": False
+            "download.prompt_for_download": False,
+            "safebrowsing.enabled": True
         })
+
         driver = webdriver.Chrome(options=chrome_options)
         driver.execute_cdp_cmd("Page.setDownloadBehavior", {"behavior": "allow", "downloadPath": dir_hilo})
-        wait = WebDriverWait(driver, 60)
+        wait = WebDriverWait(driver, 90)
 
         try:
-            if not realizar_login(driver, wait, usuario, password): raise Exception("Login fallido")
+            if not realizar_login(driver, wait, usuario, password):
+                raise Exception("Login fallido")
 
             filtro_csv = filtros_proyectos.get(empresa, "%26%3c%3e".join(["*ES000*", "*MODES*", "*CRU*", "*MARGEN*"]))
-            url_final = tarea['url'].replace("empresas.txt", urllib.parse.quote(empresa)).replace("Proyecto a borrar.csv", filtro_csv)
-            
+            empresa_encoded = urllib.parse.quote(empresa.strip(), safe="", encoding="utf-8")
+
+            # Construcción URL
+            url_final = (
+                tarea['url']
+                .strip()
+                .replace("empresas.txt", empresa_encoded)
+                .replace("Proyecto a borrar.csv", filtro_csv)
+            )
+
             driver.get(url_final)
+            
+            # Cambio a iframe de Business Central
             wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "/html/body/div[2]/div[2]/div[1]/div/div[1]/div/iframe")))
 
-            # Navegacion segun XPATH de Business Central
-            xpath_menu = "/html/body/div[1]/div[2]/form/div/div[2]/div[2]/div/div/nav/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/button"
-            btn_menu = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))
-            driver.execute_script("arguments[0].click();", btn_menu)
-            
-            time.sleep(2)
-            xpath_descarga = "//button[contains(., 'Descargar') or contains(., 'Excel')]"
-            btn_down = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_descarga)))
-            btn_down.click()
+            def click_blindado(xpath):
+                for k in range(4):
+                    try:
+                        el = wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
+                        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
+                        time.sleep(1)
+                        el.click()
+                        return True
+                    except:
+                        time.sleep(3)
+                return False
 
-            # Espera de archivo optimizada
+            # XPATHS Fijos (BC Dinámico solicitado en tus instrucciones)
+            xpath_menu = "/html/body/div[1]/div[2]/form/div/div[2]/div[2]/div/div/nav/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/button"
+            xpath_descarga = "/html/body/div[1]/div[2]/form/div/div[2]/div[5]/div/div/div/div[3]/div/div/ul/li/button"
+
+            if not click_blindado(xpath_menu): raise Exception("Error Menú")
+            time.sleep(2)
+            if not click_blindado(xpath_descarga): raise Exception("Error Botón Descarga")
+
+            # Espera de fichero con timeout de 1 hora para archivos pesados
+            inicio = time.time()
             archivo = None
-            inicio_espera = time.time()
-            while time.time() - inicio_espera < 120:
+            while time.time() - inicio < 3600:
                 files = [f for f in os.listdir(dir_hilo) if not f.endswith(('.crdownload', '.tmp'))]
                 if files:
                     pos = os.path.join(dir_hilo, files[0])
-                    if archivo_estable(pos):
+                    if os.path.getsize(pos) > 500 and archivo_estable(pos):
                         archivo = pos
                         break
-                time.sleep(2)
+                time.sleep(10)
 
-            if not archivo: raise Exception("Timeout descarga")
+            if not archivo: raise Exception("Timeout Descarga")
 
-            # Movimiento a carpeta temporal Excel
-            timestamp = datetime.now().strftime('%H%M%S')
-            nombre_final = f"{clean_emp}_{prefijo}_{timestamp}"
-            ruta_xlsx = os.path.join(ruta_excel, nombre_final + ".xlsx")
-            shutil.move(archivo, ruta_xlsx)
+            # Guardamos el Excel con nombre único
+            nuevo_nombre = f"{clean_emp}_{categoria_clean}_{datetime.now().strftime('%H%M%S')}.xlsx"
+            ruta_final_excel = os.path.join(dir_destino_excel, nuevo_nombre)
 
-            # Clasificacion por tipo de prefijo
-            df = pd.read_excel(ruta_xlsx, engine="openpyxl")
-            df.insert(0, "EMPRESA", empresa)
-            
-            # Decidir carpeta segun el contenido del prefijo
-            if "Movs. proyectos" in prefijo:
-                dest_csv = dir_movs
-            else:
-                dest_csv = dir_certif
+            shutil.move(archivo, ruta_final_excel)
 
-            ruta_csv = os.path.join(dest_csv, nombre_final + ".csv")
-            df.to_csv(ruta_csv, sep=";", index=False, encoding="utf-8-sig")
-
-            escribir_log(f"OK: {nombre_tarea}")
-            return {"status": "OK"}
+            escribir_log(f"OK {nombre_tarea}")
+            return {"status": "OK", "categoria": categoria_clean}
 
         except Exception as e:
-            escribir_log(f"Error {nombre_tarea}: {e}")
+            escribir_log(f"ERROR {nombre_tarea}: {e}")
+            try:
+                driver.save_screenshot(os.path.join(ruta_errores, f"ERR_{clean_emp}_{intento}.png"))
+            except: pass
+            time.sleep(5)
         finally:
             driver.quit()
             shutil.rmtree(dir_hilo, ignore_errors=True)
-    return {"status": "ERROR"}
 
-def limpiar_directorio_completo(directorio):
-    if not os.path.exists(directorio): return
-    for filename in os.listdir(directorio):
-        file_path = os.path.join(directorio, filename)
-        try:
-            if os.path.isfile(file_path): os.unlink(file_path)
-            elif os.path.isdir(file_path): shutil.rmtree(file_path)
-        except: pass
+    return {"status": "ERROR", "empresa": empresa, "tarea": tarea}
 
+
+def limpiar_directorio_recursivo(directorio_base):
+    """Borra el contenido de Excel y CSV base antes de empezar."""
+    if os.path.exists(directorio_base):
+        shutil.rmtree(directorio_base)
+    os.makedirs(directorio_base)
+
+def consolidar_archivos_por_categoria():
+    """Une los Excel descargados en CSVs maestros usando el motor rápido Calamine."""
+    print("\n" + "="*50)
+    print(f"[*] INICIANDO CONSOLIDACIÓN MAESTRA (Motor Calamine)")
+    print("="*50)
+    
+    if not os.path.exists(ruta_excel_base):
+        print("[!] No se encontró la carpeta de Excel.")
+        return
+
+    # --- LÍNEA CORREGIDA: Detectar las categorías (carpetas) ---
+    subcarpetas = [d for d in os.listdir(ruta_excel_base) if os.path.isdir(os.path.join(ruta_excel_base, d))]
+
+    for carpeta_cat in subcarpetas:
+        ruta_cat_excel = os.path.join(ruta_excel_base, carpeta_cat)
+        archivos_excel = glob.glob(os.path.join(ruta_cat_excel, "*.xlsx"))
+        
+        if archivos_excel:
+            ruta_salida = os.path.join(ruta_base_bc, f"{carpeta_cat} Unidos.csv")
+            print(f"\n[Categoría: {carpeta_cat}] -> Creando {os.path.basename(ruta_salida)}")
+            
+            columnas_maestras = None
+            primera_vez = True
+
+            for f in archivos_excel:
+                try:
+                    # LECTURA ULTRA RÁPIDA
+                    temp_df = pd.read_excel(f, engine="calamine", dtype=str)
+                    
+                    if temp_df.empty:
+                        print(f"      [!] Saltando {os.path.basename(f)}: Vacío.")
+                        continue
+
+                    # Normalización
+                    temp_df.columns = [str(c).strip().upper() for c in temp_df.columns]
+
+                    # Inserción de Empresa
+                    if "EMPRESA" not in temp_df.columns:
+                        emp_nombre = os.path.basename(f).split('_')[0].upper()
+                        temp_df.insert(0, "EMPRESA", emp_nombre)
+
+                    # BLINDAJE DE ORDEN DE COLUMNAS
+                    if primera_vez:
+                        columnas_maestras = temp_df.columns
+                    else:
+                        temp_df = temp_df.reindex(columns=columnas_maestras, fill_value="")
+
+                    # LIMPIEZA DE SALTOS DE LÍNEA
+                    temp_df = temp_df.fillna("")
+                    for col in temp_df.columns:
+                        temp_df[col] = temp_df[col].astype(str).str.replace(r'\r|\n', ' ', regex=True)
+
+                    # ESCRITURA AL CSV MAESTRO
+                    temp_df.to_csv(
+                        ruta_salida,
+                        mode='w' if primera_vez else 'a',
+                        index=False,
+                        sep=";",
+                        encoding="utf-8-sig",
+                        quoting=csv.QUOTE_ALL, 
+                        header=primera_vez,
+                        decimal=","
+                    )
+                    
+                    print(f"      [+] {os.path.basename(f)} unido.")
+                    primera_vez = False
+                    del temp_df # Liberar RAM
+
+                except Exception as e:
+                    print(f"      [!] Error en {os.path.basename(f)}: {e}")   
+   
 if __name__ == "__main__":
     inicializar_entorno()
     inicio_global = datetime.now()
-    
+    print(f"=== INICIO PROCESO: {inicio_global.strftime('%H:%M:%S')} ===")
+
     try:
-        login = [l.strip() for l in open(ruta_usuario_txt, "r", encoding="utf-8")]
+        # 1. Cargar Credenciales
+        with open(ruta_usuario_txt, "r", encoding="utf-8") as f:
+            datos_login = [l.strip() for l in f.readlines() if l.strip()]
+        
+        # 2. Cargar Empresas y Enlaces
         empresas = [l.strip() for l in open(ruta_empresas_txt, "r", encoding="utf-8") if l.strip()]
-        enlaces = [l.strip() for l in open(ruta_enlaces_txt, "r", encoding="utf-8") if l.strip()]
+        enlaces_raw = [l.strip() for l in open(ruta_enlaces_txt, "r", encoding="utf-8") if l.strip()]
+
+        # 3. Limpieza de carpetas
+        limpiar_directorio_recursivo(ruta_excel_base)
+        limpiar_directorio_recursivo(ruta_csv_base)
+
+        # 4. Carga de filtros (Corregido para evitar saltos de línea)
+        filtros_proyectos = {}
+        if os.path.exists(ruta_csv_proyectos):
+            df_filtros = pd.read_csv(ruta_csv_proyectos, sep=None, engine='python', encoding='utf-8-sig')
+            for _, row in df_filtros.iterrows():
+                emp = str(row["EMPRESA"]).strip()
+                proy = str(row["PROYECTOS A ELIMINAR"]).strip()
+                if emp and proy:
+                    filtros_proyectos.setdefault(emp, []).append(proy)
         
-        limpiar_directorio_completo(ruta_excel)
-        limpiar_directorio_completo(dir_movs)
-        limpiar_directorio_completo(dir_certif)
-    except Exception as e:
-        print(f"Error inicial: {e}"); sys.exit(1)
+        sep_url = "%26%3c%3e"
+        fijos = ["*ES000*", "*MODES*", "*CRU*", "*MARGEN*"]
+        for emp in filtros_proyectos:
+            filtros_proyectos[emp] = sep_url.join(filtros_proyectos[emp] + fijos)
 
-    # Carga de filtros personalizados
-    filtros = {}
-    if os.path.exists(ruta_csv_proyectos):
-        with open(ruta_csv_proyectos, mode="r", encoding="utf-8-sig") as f:
-            reader = csv.DictReader(f, delimiter=";")
-            for row in reader:
-                emp = row.get("EMPRESA", "").strip()
-                proy = row.get("PROYECTOS A ELIMINAR", "").strip()
-                if emp and proy: filtros.setdefault(emp, []).append(proy)
-        for emp in filtros: filtros[emp] = "%26%3c%3e".join(filtros[emp] + ["*ES000*", "*MODES*"])
+        # 5. Preparar Tareas
+        tareas_base = []
+        for i in range(0, len(enlaces_raw)-1, 2):
+            tareas_base.append({
+                "url": enlaces_raw[i],
+                "prefijo": enlaces_raw[i+1]
+            })
 
-    # Preparar matriz de trabajos
-    tareas_base = [{"url": enlaces[i], "prefijo": enlaces[i+1]} for i in range(0, len(enlaces)-1, 2)]
-    trabajos = []
-    id_b = 1
-    for emp in sorted(set(empresas)):
-        for t in tareas_base:
-            trabajos.append((id_b, t, emp, login[0], login[1], filtros))
-            id_b += 1
+        trabajos = []
+        id_gen = 1
+        for emp in sorted(set(empresas)):
+            for tarea in tareas_base:
+                trabajos.append((id_gen, tarea, emp, datos_login[0], datos_login[1], filtros_proyectos))
+                id_gen += 1
 
-    # Ejecucion con 5 hilos para optimizar tiempo
-    pendientes = trabajos
-    resultados_ok = []
-    for ronda in range(1, 3):
-        if not pendientes: break
-        print(f"\n[*] RONDA {ronda}: Procesando {len(pendientes)} tareas con 5 hilos...")
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            resultados = list(executor.map(lambda p: procesar_descarga(*p), pendientes))
-        
-        nuevos_p = []
-        for i, r in enumerate(resultados):
-            if r.get("status") == "OK": resultados_ok.append(r)
-            else: nuevos_p.append(pendientes[i])
-        pendientes = nuevos_p
+        # 6. Ejecución de Rondas
+        pendientes = trabajos
+        ronda = 1
+        while pendientes and ronda <= 3:
+            print(f"\n[*] RONDA {ronda}: Procesando {len(pendientes)} trabajos...")
+            with ThreadPoolExecutor(max_workers=3) as executor:
+                resultados = list(executor.map(lambda p: procesar_descarga(*p), pendientes))
 
-    # Consolidacion final en dos archivos separados en C:\ArchivosBC
-    print("\n" + "-"*40)
-    config_union = [
-        ("Movs. Proyectos", dir_movs, "MOV_PROYECTOS"),
-        ("Certificaciones Registradas", dir_certif, "LISTA_CERTIF")
-    ]
-
-    for nombre_tipo, ruta_carpeta, sufijo in config_union:
-        archivos = glob.glob(os.path.join(ruta_carpeta, "*.csv"))
-        if archivos:
-            print(f"[*] Uniendo {nombre_tipo}...")
-            df_lista = []
-            for f in archivos:
-                df_lista.append(pd.read_csv(f, sep=";", encoding="utf-8-sig", dtype=str, low_memory=False))
+            nuevos_pendientes = []
+            for i, r in enumerate(resultados):
+                if r.get("status") != "OK":
+                    job = list(pendientes[i])
+                    job[0] += (ronda * 1000)
+                    nuevos_pendientes.append(tuple(job))
             
-            df_final = pd.concat(df_lista, ignore_index=True, sort=False)
-            ruta_final = os.path.join(ruta_base_bc, f"CONSOLIDADO_{sufijo}.csv")
-            df_final.to_csv(ruta_final, index=False, sep=";", encoding="utf-8-sig")
-            print(f"[OK] Generado: CONSOLIDADO_{sufijo}.csv")
-        else:
-            print(f"[!] No se encontraron archivos para {nombre_tipo}")
+            pendientes = nuevos_pendientes
+            ronda += 1
 
-    duracion = str(datetime.now() - inicio_global).split(".")[0]
-    print(f"\n{'='*50}\nTOTAL FINALIZADO: {duracion} | EXITOS: {len(resultados_ok)}\n{'='*50}")
+        # 7. Consolidación Final (Donde se asegura la columna DP)
+        consolidar_archivos_por_categoria()
+
+        print(f"\n=== FIN === Tiempo total: {datetime.now() - inicio_global}")
+
+    except Exception as e:
+        print(f"[FATAL] {e}")
+        escribir_log(f"FATAL MAIN: {e}")

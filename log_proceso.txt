@@ -1098,3 +1098,852 @@ Symbols not available. Dumping unresolved backtrace:
 2025-12-19 15:25:31 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Lista Líneas de Certificación Registradas] en intento 1
 2025-12-19 15:32:17 - OK [ZT_ZENER TELEKOM - Movs. proyectos] en intento 1
 2025-12-19 15:32:19 - Iniciando unión de CSVs para consolidado
+2025-12-22 08:41:52 - Entorno preparado.
+2025-12-22 08:41:52 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 08:41:57 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 08:42:02 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:42:25 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 08:42:27 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 08:43:23 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 08:43:30 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 08:43:59 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 08:44:12 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:44:39 - OK [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas]
+2025-12-22 08:44:41 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 08:45:09 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 08:45:18 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 08:45:38 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 08:45:45 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 08:45:47 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-22 08:45:51 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:46:23 - OK [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas]
+2025-12-22 08:46:30 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-22 08:46:41 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-22 08:46:53 - Iniciando [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:47:03 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-22 08:47:05 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-22 08:47:20 - OK [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas]
+2025-12-22 08:47:27 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-22 08:47:34 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-22 08:47:46 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:48:08 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-22 08:48:10 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-22 08:48:19 - OK [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas]
+2025-12-22 08:48:22 - OK [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]
+2025-12-22 08:48:26 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-22 08:48:35 - Iniciando [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:48:39 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-22 08:48:42 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 08:48:58 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-22 08:49:05 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 08:49:24 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-22 08:49:36 - Iniciando [PE_ZENER PERU - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:50:01 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-22 08:50:04 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-22 08:50:33 - OK [PE_ZENER PERU - Lista Líneas de Certificación Registradas]
+2025-12-22 08:50:37 - ERROR [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas]: HTTPConnectionPool(host='localhost', port=57208): Read timed out. (read timeout=120)
+2025-12-22 08:50:40 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-22 08:50:40 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-22 08:50:52 - Iniciando [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:51:01 - Iniciando [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 08:51:16 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-22 08:51:18 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-22 08:52:26 - OK [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas]
+2025-12-22 08:52:33 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-22 08:57:22 - ERROR [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas]: Error Menú
+2025-12-22 08:57:30 - Iniciando [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas] (Intento 3)
+2025-12-22 08:57:41 - ERROR [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]: Error Menú
+2025-12-22 08:57:48 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 2)
+2025-12-22 08:57:58 - OK [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas]
+2025-12-22 08:58:10 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:58:16 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]
+2025-12-22 08:58:19 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 08:58:37 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Lista Líneas de Certificación Registradas]
+2025-12-22 08:58:44 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 08:58:56 - ERROR [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]: Error Menú
+2025-12-22 08:59:04 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 2)
+2025-12-22 08:59:18 - OK [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-22 08:59:30 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 08:59:31 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]
+2025-12-22 08:59:34 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 09:00:01 - OK [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]
+2025-12-22 09:00:08 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 09:00:34 - OK [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]
+2025-12-22 09:00:47 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:01:13 - OK [XC_DIGITAL CABLE DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-22 09:01:15 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 09:04:57 - Entorno preparado.
+2025-12-22 09:06:14 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:06:14 - FALLO [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:06:14 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:07:26 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:07:26 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:07:27 - FALLO [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:08:37 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:08:38 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:08:38 - FALLO [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] en BUSCANDO_IFRAME: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:09:29 - FALLO [EN_ZENER ENCITEL - Movs. proyectos] en BUSCANDO_IFRAME: HTTPConnectionPool(host='localhost', port=58549): Max retries exceeded with url: /session/e0e291a354a63df824d8704b9772ef72/element (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58549): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión"))
+2025-12-22 09:09:30 - FALLO [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] en BUSCANDO_IFRAME: HTTPConnectionPool(host='localhost', port=58569): Max retries exceeded with url: /session/a816d67754c420a62c7791d1b27d58ba/element (Caused by NewConnectionError("HTTPConnection(host='localhost', port=58569): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión"))
+2025-12-22 09:09:31 - Entorno preparado.
+2025-12-22 09:09:52 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] (ESPERA_DISCO): name 'archivo_stable' is not defined
+2025-12-22 09:10:09 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] (ESPERA_DISCO): name 'archivo_stable' is not defined
+2025-12-22 09:10:30 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] (ESPERA_DISCO): name 'archivo_stable' is not defined
+2025-12-22 09:10:37 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] (ESPERA_DISCO): name 'archivo_stable' is not defined
+2025-12-22 09:10:46 - FALLO [EN_ZENER ENCITEL - Movs. proyectos] (ESPERA_DISCO): name 'archivo_stable' is not defined
+2025-12-22 09:10:53 - FALLO [AU_ZENER AUSTRAL - Movs. proyectos] (ESPERA_DISCO): name 'archivo_stable' is not defined
+2025-12-22 09:25:54 - Entorno preparado.
+2025-12-22 09:25:54 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:25:59 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:26:04 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:26:22 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:26:30 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 2)
+2025-12-22 09:26:56 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:27:03 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 3)
+2025-12-22 09:27:29 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:27:36 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:27:37 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:27:44 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 2)
+2025-12-22 09:28:03 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:28:11 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 2)
+2025-12-22 09:28:33 - ERROR [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]: name 'archivo_stable' is not defined
+2025-12-22 09:28:37 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:28:40 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 09:28:44 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 3)
+2025-12-22 09:29:10 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:29:23 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:29:47 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:29:55 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 2)
+2025-12-22 09:30:17 - ERROR [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]: name 'archivo_stable' is not defined
+2025-12-22 09:30:19 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:30:25 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 3)
+2025-12-22 09:30:26 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 3)
+2025-12-22 09:30:52 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 09:31:09 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:31:33 - ERROR [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas]: name 'archivo_stable' is not defined
+2025-12-22 09:31:41 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 09:31:41 - ERROR [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]: name 'archivo_stable' is not defined
+2025-12-22 09:31:48 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 09:31:57 - ERROR [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]: ('Connection aborted.', ConnectionResetError(10054, 'Se ha forzado la interrupción de una conexión existente por el host remoto', None, 10054, None))
+2025-12-22 09:32:04 - Entorno preparado.
+2025-12-22 09:32:04 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:32:06 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:32:09 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:32:14 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:32:16 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:32:17 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:35:34 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 09:35:37 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:35:43 - [DEBUG URL] Empresa='EN_ZENER ENCITEL' | Encoded='EN_ZENER%20ENCITEL' | URL='https://bc.zener.es/ZENER_BC/?company=EN_ZENER%20ENCITEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:36:37 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 09:36:44 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:36:50 - [DEBUG URL] Empresa='EN_ZENER ENCITEL' | Encoded='EN_ZENER%20ENCITEL' | URL='https://bc.zener.es/ZENER_BC/?company=EN_ZENER%20ENCITEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:37:10 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 09:37:23 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:37:29 - [DEBUG URL] Empresa='EN_ZENER ENCITEL' | Encoded='EN_ZENER%20ENCITEL' | URL='https://bc.zener.es/ZENER_BC/?company=EN_ZENER%20ENCITEL&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:37:45 - OK [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]
+2025-12-22 09:37:47 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 09:37:49 - OK [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas]
+2025-12-22 09:37:50 - [DEBUG URL] Empresa='ET_ZENER ENGINEERING TELEKOM' | Encoded='ET_ZENER%20ENGINEERING%20TELEKOM' | URL='https://bc.zener.es/ZENER_BC/?company=ET_ZENER%20ENGINEERING%20TELEKOM&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:37:56 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 09:38:02 - [DEBUG URL] Empresa='ET_ZENER ENGINEERING TELEKOM' | Encoded='ET_ZENER%20ENGINEERING%20TELEKOM' | URL='https://bc.zener.es/ZENER_BC/?company=ET_ZENER%20ENGINEERING%20TELEKOM&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:38:22 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 09:38:25 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: Error Menú
+2025-12-22 09:38:32 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 2)
+2025-12-22 09:38:34 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:38:38 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:38:41 - [DEBUG URL] Empresa='ET_ZENER ENGINEERING TELEKOM' | Encoded='ET_ZENER%20ENGINEERING%20TELEKOM' | URL='https://bc.zener.es/ZENER_BC/?company=ET_ZENER%20ENGINEERING%20TELEKOM&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:39:00 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 09:39:01 - OK [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas]
+2025-12-22 09:39:02 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:39:05 - [DEBUG URL] Empresa='IN_GEST. E INSTAL. INSATEL' | Encoded='IN_GEST.%20E%20INSTAL.%20INSATEL' | URL='https://bc.zener.es/ZENER_BC/?company=IN_GEST.%20E%20INSTAL.%20INSATEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:39:08 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:39:14 - [DEBUG URL] Empresa='IN_GEST. E INSTAL. INSATEL' | Encoded='IN_GEST.%20E%20INSTAL.%20INSATEL' | URL='https://bc.zener.es/ZENER_BC/?company=IN_GEST.%20E%20INSTAL.%20INSATEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:39:40 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-22 09:39:52 - Iniciando [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:39:58 - [DEBUG URL] Empresa='IN_GEST. E INSTAL. INSATEL' | Encoded='IN_GEST.%20E%20INSTAL.%20INSATEL' | URL='https://bc.zener.es/ZENER_BC/?company=IN_GEST.%20E%20INSTAL.%20INSATEL&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:40:18 - OK [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas]
+2025-12-22 09:40:20 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-22 09:40:26 - [DEBUG URL] Empresa='IT_ZENER TELECOMUNICAZIONE' | Encoded='IT_ZENER%20TELECOMUNICAZIONE' | URL='https://bc.zener.es/ZENER_BC/?company=IT_ZENER%20TELECOMUNICAZIONE&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:40:54 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-22 09:41:02 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-22 09:41:10 - [DEBUG URL] Empresa='IT_ZENER TELECOMUNICAZIONE' | Encoded='IT_ZENER%20TELECOMUNICAZIONE' | URL='https://bc.zener.es/ZENER_BC/?company=IT_ZENER%20TELECOMUNICAZIONE&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:41:36 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-22 09:41:49 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:41:55 - [DEBUG URL] Empresa='IT_ZENER TELECOMUNICAZIONE' | Encoded='IT_ZENER%20TELECOMUNICAZIONE' | URL='https://bc.zener.es/ZENER_BC/?company=IT_ZENER%20TELECOMUNICAZIONE&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:42:19 - OK [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas]
+2025-12-22 09:42:21 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-22 09:42:24 - [DEBUG URL] Empresa='PB_ZENER TELECOM BV' | Encoded='PB_ZENER%20TELECOM%20BV' | URL='https://bc.zener.es/ZENER_BC/?company=PB_ZENER%20TELECOM%20BV&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:44:08 - ERROR [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]: Error Menú
+2025-12-22 09:44:16 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 2)
+2025-12-22 09:44:21 - [DEBUG URL] Empresa='ET_ZENER ENGINEERING TELEKOM' | Encoded='ET_ZENER%20ENGINEERING%20TELEKOM' | URL='https://bc.zener.es/ZENER_BC/?company=ET_ZENER%20ENGINEERING%20TELEKOM&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:44:53 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 09:45:00 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-22 09:45:08 - [DEBUG URL] Empresa='PB_ZENER TELECOM BV' | Encoded='PB_ZENER%20TELECOM%20BV' | URL='https://bc.zener.es/ZENER_BC/?company=PB_ZENER%20TELECOM%20BV&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:45:24 - ERROR [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]: Error Menú
+2025-12-22 09:45:31 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 2)
+2025-12-22 09:45:34 - [DEBUG URL] Empresa='IN_GEST. E INSTAL. INSATEL' | Encoded='IN_GEST.%20E%20INSTAL.%20INSATEL' | URL='https://bc.zener.es/ZENER_BC/?company=IN_GEST.%20E%20INSTAL.%20INSATEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:45:45 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-22 09:45:57 - Iniciando [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:46:04 - [DEBUG URL] Empresa='PB_ZENER TELECOM BV' | Encoded='PB_ZENER%20TELECOM%20BV' | URL='https://bc.zener.es/ZENER_BC/?company=PB_ZENER%20TELECOM%20BV&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:46:28 - OK [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas]
+2025-12-22 09:46:30 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 09:46:32 - [DEBUG URL] Empresa='PE_ZENER PERU' | Encoded='PE_ZENER%20PERU' | URL='https://bc.zener.es/ZENER_BC/?company=PE_ZENER%20PERU&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:47:05 - ERROR [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff76bf388e5
+	0x7ff76bf38940
+	0x7ff76bd1165d
+	0x7ff76bd69a33
+	0x7ff76bd69d3c
+	0x7ff76bdbdf67
+	0x7ff76bdbac97
+	0x7ff76bd5ac29
+	0x7ff76bd5ba93
+	0x7ff76c250640
+	0x7ff76c24af80
+	0x7ff76c2696e6
+	0x7ff76bf55de4
+	0x7ff76bf5ed8c
+	0x7ff76bf42004
+	0x7ff76bf421b5
+	0x7ff76bf27ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-22 09:47:13 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 3)
+2025-12-22 09:47:15 - [DEBUG URL] Empresa='IN_GEST. E INSTAL. INSATEL' | Encoded='IN_GEST.%20E%20INSTAL.%20INSATEL' | URL='https://bc.zener.es/ZENER_BC/?company=IN_GEST.%20E%20INSTAL.%20INSATEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:47:55 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-22 09:48:02 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 09:48:09 - [DEBUG URL] Empresa='PE_ZENER PERU' | Encoded='PE_ZENER%20PERU' | URL='https://bc.zener.es/ZENER_BC/?company=PE_ZENER%20PERU&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:48:43 - ERROR [PB_ZENER TELECOM BV - Movs. proyectos]: Error Menú
+2025-12-22 09:48:51 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 2)
+2025-12-22 09:48:57 - [DEBUG URL] Empresa='PB_ZENER TELECOM BV' | Encoded='PB_ZENER%20TELECOM%20BV' | URL='https://bc.zener.es/ZENER_BC/?company=PB_ZENER%20TELECOM%20BV&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:49:06 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-22 09:49:18 - Iniciando [PE_ZENER PERU - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:49:19 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-22 09:49:21 - [DEBUG URL] Empresa='PE_ZENER PERU' | Encoded='PE_ZENER%20PERU' | URL='https://bc.zener.es/ZENER_BC/?company=PE_ZENER%20PERU&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:49:21 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:49:26 - [DEBUG URL] Empresa='PT_CLOUDSENTINIEL' | Encoded='PT_CLOUDSENTINIEL' | URL='https://bc.zener.es/ZENER_BC/?company=PT_CLOUDSENTINIEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:49:55 - OK [PE_ZENER PERU - Lista Líneas de Certificación Registradas]
+2025-12-22 09:49:57 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-22 09:50:02 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:50:04 - [DEBUG URL] Empresa='PT_CLOUDSENTINIEL' | Encoded='PT_CLOUDSENTINIEL' | URL='https://bc.zener.es/ZENER_BC/?company=PT_CLOUDSENTINIEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%271%27&dc=0'
+2025-12-22 09:50:09 - Iniciando [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:50:12 - [DEBUG URL] Empresa='PT_CLOUDSENTINIEL' | Encoded='PT_CLOUDSENTINIEL' | URL='https://bc.zener.es/ZENER_BC/?company=PT_CLOUDSENTINIEL&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27ATT%20Certification%20Line%27.%27ATT%20Cancelled%27%20IS%20%27No%27&dc=0'
+2025-12-22 09:50:36 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-22 09:50:38 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-22 09:50:40 - [DEBUG URL] Empresa='RZ_RZT INGENIERÍA Y PROYECTOS' | Encoded='RZ_RZT%20INGENIER%C3%8DA%20Y%20PROYECTOS' | URL='https://bc.zener.es/ZENER_BC/?company=RZ_RZT%20INGENIER%C3%8DA%20Y%20PROYECTOS&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:52:52 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-22 09:52:59 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 2)
+2025-12-22 09:53:02 - [DEBUG URL] Empresa='PE_ZENER PERU' | Encoded='PE_ZENER%20PERU' | URL='https://bc.zener.es/ZENER_BC/?company=PE_ZENER%20PERU&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%27%20AND%20%27Job%20Ledger%20Entry%27.%27Entry%20Type%27%20IS%20%271%27%20AND%20%27Job%20Ledger%20Entry%27.Type%20IS%20%272%27%20AND%20%27Job%20Ledger%20Entry%27.%27No.%27%20IS%20%27%3c%3e0*%26%3c%3e3*%26%3c%3e710*%26%3c%3e740*%26%3c%3e759*%26%3c%3e76*%26%3c%3e771*%26%3c%3e7780000%26%3c%3e795*%27&dc=0'
+2025-12-22 09:53:22 - Entorno preparado.
+2025-12-22 09:53:22 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:53:27 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:53:28 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES...'
+2025-12-22 09:53:30 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000*%26%3c%3e*MODES...'
+2025-12-22 09:53:32 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:53:39 - [DEBUG URL] Empresa='AU_ZENER AUSTRAL' | Encoded='AU_ZENER%20AUSTRAL' | URL='https://bc.zener.es/ZENER_BC/?company=AU_ZENER%20AUSTRAL&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27...'
+2025-12-22 09:53:51 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 09:53:53 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:54:00 - [DEBUG URL] Empresa='EN_ZENER ENCITEL' | Encoded='EN_ZENER%20ENCITEL' | URL='https://bc.zener.es/ZENER_BC/?company=EN_ZENER%20ENCITEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000...'
+2025-12-22 09:54:36 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 09:54:44 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 09:54:49 - [DEBUG URL] Empresa='EN_ZENER ENCITEL' | Encoded='EN_ZENER%20ENCITEL' | URL='https://bc.zener.es/ZENER_BC/?company=EN_ZENER%20ENCITEL&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%26%3c%3e*ES000...'
+2025-12-22 09:55:10 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 09:55:22 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 09:55:29 - [DEBUG URL] Empresa='EN_ZENER ENCITEL' | Encoded='EN_ZENER%20ENCITEL' | URL='https://bc.zener.es/ZENER_BC/?company=EN_ZENER%20ENCITEL&page=50057&filter=%27ATT%20Certification%20Line%27.%27ATT%20Certification%20Type%27%20IS%20%273%27%20AND%20%27ATT%20Certification%20Line%27.%27...'
+2025-12-22 09:55:49 - OK [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas]
+2025-12-22 09:55:51 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 09:55:58 - [DEBUG URL] Empresa='ET_ZENER ENGINEERING TELEKOM' | Encoded='ET_ZENER%20ENGINEERING%20TELEKOM' | URL='https://bc.zener.es/ZENER_BC/?company=ET_ZENER%20ENGINEERING%20TELEKOM&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%...'
+2025-12-22 09:56:19 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 09:56:26 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 09:56:33 - [DEBUG URL] Empresa='ET_ZENER ENGINEERING TELEKOM' | Encoded='ET_ZENER%20ENGINEERING%20TELEKOM' | URL='https://bc.zener.es/ZENER_BC/?company=ET_ZENER%20ENGINEERING%20TELEKOM&page=92&filter=%27Job%20Ledger%20Entry%27.%27Job%20No.%27%20IS%20%27%3c%3e*ES000*%26%3c%3e*MODES*%26%3c%3e*CRU*%26%3c%3e*MARGEN*%...'
+2025-12-22 09:56:53 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 09:57:04 - Entorno preparado.
+2025-12-22 09:57:04 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:57:09 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 09:57:14 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:09:25 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 10:09:33 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 2)
+2025-12-22 10:10:15 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 10:10:21 - ERROR [AU_ZENER AUSTRAL - Movs. proyectos]: name 'archivo_stable' is not defined
+2025-12-22 10:16:05 - INICIO PROCESO GLOBAL
+2025-12-22 10:16:10 - Iniciando empresa: ZA_ZENER ALARMAS
+2025-12-22 10:18:31 - Iniciando empresa: ZR_ZENER REDES
+2025-12-22 10:21:38 - Iniciando empresa: ZP_ZENER PLUS
+2025-12-22 10:26:06 - Iniciando empresa: ZC_ZENER COMUNICACIONES
+2025-12-22 10:33:22 - Entorno preparado.
+2025-12-22 10:33:22 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 10:33:27 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-22 10:33:32 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:33:52 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 10:33:54 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 10:34:39 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 10:34:46 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-22 10:35:13 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-22 10:35:25 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:35:53 - OK [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas]
+2025-12-22 10:35:55 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 10:36:22 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 10:36:29 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 10:36:48 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-22 10:36:55 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-22 10:36:58 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-22 10:37:00 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:37:28 - OK [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas]
+2025-12-22 10:37:35 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-22 10:37:40 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-22 10:37:52 - Iniciando [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:38:08 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-22 10:38:10 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-22 10:38:28 - OK [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas]
+2025-12-22 10:38:36 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-22 10:38:39 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-22 10:38:51 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:39:18 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-22 10:39:21 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-22 10:39:24 - OK [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas]
+2025-12-22 10:39:25 - OK [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]
+2025-12-22 10:39:31 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-22 10:39:37 - Iniciando [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:39:49 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-22 10:39:51 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 10:40:01 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-22 10:40:05 - OK [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas]
+2025-12-22 10:40:09 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 10:40:17 - Iniciando [PE_ZENER PERU - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:40:20 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-22 10:40:22 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-22 10:46:33 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-22 10:46:38 - ERROR [PE_ZENER PERU - Lista Líneas de Certificación Registradas]: Error Menú
+2025-12-22 10:46:40 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 2)
+2025-12-22 10:46:43 - ERROR [PT_CLOUDSENTINIEL - Movs. proyectos]: Error Menú
+2025-12-22 10:46:48 - Iniciando [PE_ZENER PERU - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 10:46:55 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 2)
+2025-12-22 10:47:37 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-22 10:47:44 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-22 10:48:08 - OK [PE_ZENER PERU - Lista Líneas de Certificación Registradas]
+2025-12-22 10:48:22 - Iniciando [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:48:54 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-22 10:48:56 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-22 10:49:27 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]
+2025-12-22 10:49:34 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-22 10:50:06 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]
+2025-12-22 10:50:20 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:51:00 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Lista Líneas de Certificación Registradas]
+2025-12-22 10:51:02 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 10:52:13 - OK [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-22 10:52:21 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 10:53:04 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-22 10:53:11 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 3)
+2025-12-22 10:54:45 - ERROR [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas]: Error Menú
+2025-12-22 10:54:52 - Iniciando [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 10:56:37 - OK [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas]
+2025-12-22 10:56:49 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 10:59:35 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-22 10:59:43 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:00:05 - OK [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-22 11:00:10 - OK [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]
+2025-12-22 11:00:12 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:00:22 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:00:52 - OK [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]
+2025-12-22 11:00:54 - OK [XC_DIGITAL CABLE DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-22 11:00:54 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:01:01 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:01:14 - ERROR [XL_DIGICALL LEVANTE - Movs. proyectos]: "There is no item named '[Content_Types].xml' in the archive"
+2025-12-22 11:01:21 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 2)
+2025-12-22 11:01:33 - OK [XL_DIGICALL LEVANTE - Movs. proyectos]
+2025-12-22 11:01:46 - Iniciando [XL_DIGICALL LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:01:50 - OK [XL_DIGICALL LEVANTE - Movs. proyectos]
+2025-12-22 11:01:52 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:02:17 - OK [XL_DIGICALL LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-22 11:02:24 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:02:58 - OK [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-22 11:02:58 - OK [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-22 11:03:00 - Iniciando [ZA_ZENER ALARMAS - Movs. proyectos] (Intento 1)
+2025-12-22 11:03:10 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:03:27 - OK [TL_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-22 11:03:34 - OK [ZA_ZENER ALARMAS - Movs. proyectos]
+2025-12-22 11:03:34 - Iniciando [ZA_ZENER ALARMAS - Movs. proyectos] (Intento 1)
+2025-12-22 11:03:44 - OK [XT_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-22 11:03:46 - Iniciando [ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:03:46 - Iniciando [ZC_ZENER COMUNICACIONES - Movs. proyectos] (Intento 1)
+2025-12-22 11:06:58 - OK [ZA_ZENER ALARMAS - Movs. proyectos]
+2025-12-22 11:07:05 - Iniciando [ZC_ZENER COMUNICACIONES - Movs. proyectos] (Intento 1)
+2025-12-22 11:09:58 - OK [ZC_ZENER COMUNICACIONES - Movs. proyectos]
+2025-12-22 11:10:10 - ERROR [ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas]: Error Menú
+2025-12-22 11:10:12 - Iniciando [ZC_ZENER COMUNICACIONES - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:10:18 - Iniciando [ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 11:12:52 - OK [ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas]
+2025-12-22 11:12:54 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos] (Intento 1)
+2025-12-22 11:16:32 - ERROR [ZC_ZENER COMUNICACIONES - Lista Líneas de Certificación Registradas]: Error Menú
+2025-12-22 11:16:41 - Iniciando [ZC_ZENER COMUNICACIONES - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-22 11:19:16 - ERROR [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos]: Error Menú
+2025-12-22 11:19:26 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos] (Intento 2)
+2025-12-22 11:20:03 - OK [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos]
+2025-12-22 11:20:10 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos] (Intento 1)
+2025-12-22 11:21:35 - OK [ZC_ZENER COMUNICACIONES - Movs. proyectos]
+2025-12-22 11:21:47 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:22:44 - OK [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos]
+2025-12-22 11:22:46 - Iniciando [ZN_ZENER NORTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:22:47 - OK [ZE_ZEI INSTALACIONES Y PROYECT - Lista Líneas de Certificación Registradas]
+2025-12-22 11:22:55 - Iniciando [ZN_ZENER NORTE - Movs. proyectos] (Intento 1)
+2025-12-22 11:23:13 - OK [ZN_ZENER NORTE - Movs. proyectos]
+2025-12-22 11:23:21 - OK [ZN_ZENER NORTE - Movs. proyectos]
+2025-12-22 11:23:24 - Iniciando [ZP_ZENER PLUS - Movs. proyectos] (Intento 1)
+2025-12-22 11:23:25 - Iniciando [ZN_ZENER NORTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:24:03 - OK [ZN_ZENER NORTE - Lista Líneas de Certificación Registradas]
+2025-12-22 11:24:13 - Iniciando [ZP_ZENER PLUS - Movs. proyectos] (Intento 1)
+2025-12-22 11:26:05 - OK [ZP_ZENER PLUS - Movs. proyectos]
+2025-12-22 11:26:17 - Iniciando [ZP_ZENER PLUS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:32:47 - OK [ZP_ZENER PLUS - Movs. proyectos]
+2025-12-22 11:32:50 - Iniciando [ZR_ZENER REDES - Movs. proyectos] (Intento 1)
+2025-12-22 11:33:56 - OK [ZR_ZENER REDES - Movs. proyectos]
+2025-12-22 11:34:04 - Iniciando [ZR_ZENER REDES - Movs. proyectos] (Intento 1)
+2025-12-22 11:35:30 - OK [ZP_ZENER PLUS - Lista Líneas de Certificación Registradas]
+2025-12-22 11:35:32 - OK [ZC_ZENER COMUNICACIONES - Lista Líneas de Certificación Registradas]
+2025-12-22 11:35:34 - Iniciando [ZT_ZENER TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 11:35:42 - Iniciando [ZR_ZENER REDES - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:37:41 - OK [ZT_ZENER TELEKOM - Movs. proyectos]
+2025-12-22 11:37:49 - Iniciando [ZT_ZENER TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-22 11:38:41 - OK [ZR_ZENER REDES - Movs. proyectos]
+2025-12-22 11:38:54 - Iniciando [ZT_ZENER TELEKOM - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:39:44 - OK [ZR_ZENER REDES - Lista Líneas de Certificación Registradas]
+2025-12-22 11:39:46 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos] (Intento 1)
+2025-12-22 11:40:15 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos]
+2025-12-22 11:40:22 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos] (Intento 1)
+2025-12-22 11:42:54 - OK [ZT_ZENER TELEKOM - Lista Líneas de Certificación Registradas]
+2025-12-22 11:43:07 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-22 11:43:39 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Lista Líneas de Certificación Registradas]
+2025-12-22 11:46:44 - ERROR [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos]: Error Menú
+2025-12-22 11:46:51 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos] (Intento 2)
+2025-12-22 11:47:20 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos]
+2025-12-22 11:50:47 - OK [ZT_ZENER TELEKOM - Movs. proyectos]
+2025-12-22 11:50:59 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-22 11:57:21 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-22 11:57:28 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 2)
+2025-12-22 11:58:28 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-23 09:17:06 - Entorno preparado.
+2025-12-23 09:17:06 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-23 09:17:11 - Iniciando [AU_ZENER AUSTRAL - Movs. proyectos] (Intento 1)
+2025-12-23 09:17:17 - Iniciando [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:17:45 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-23 09:17:47 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-23 09:18:15 - OK [AU_ZENER AUSTRAL - Movs. proyectos]
+2025-12-23 09:18:22 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 1)
+2025-12-23 09:18:55 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-23 09:19:07 - Iniciando [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:19:21 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff6d88a88e5
+	0x7ff6d88a8940
+	0x7ff6d868165d
+	0x7ff6d86d9a33
+	0x7ff6d86d9d3c
+	0x7ff6d872df67
+	0x7ff6d872ac97
+	0x7ff6d86cac29
+	0x7ff6d86cba93
+	0x7ff6d8bc0640
+	0x7ff6d8bbaf80
+	0x7ff6d8bd96e6
+	0x7ff6d88c5de4
+	0x7ff6d88ced8c
+	0x7ff6d88b2004
+	0x7ff6d88b21b5
+	0x7ff6d8897ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-23 09:19:28 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 2)
+2025-12-23 09:19:43 - OK [EN_ZENER ENCITEL - Lista Líneas de Certificación Registradas]
+2025-12-23 09:19:45 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-23 09:20:22 - OK [AU_ZENER AUSTRAL - Lista Líneas de Certificación Registradas]
+2025-12-23 09:20:30 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-23 09:21:05 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-23 09:21:18 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:21:44 - OK [ET_ZENER ENGINEERING TELEKOM - Lista Líneas de Certificación Registradas]
+2025-12-23 09:21:46 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-23 09:22:30 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-23 09:22:37 - Iniciando [IN_GEST. E INSTAL. INSATEL - Movs. proyectos] (Intento 1)
+2025-12-23 09:23:07 - OK [IN_GEST. E INSTAL. INSATEL - Movs. proyectos]
+2025-12-23 09:23:20 - Iniciando [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:23:55 - OK [IN_GEST. E INSTAL. INSATEL - Lista Líneas de Certificación Registradas]
+2025-12-23 09:23:58 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-23 09:24:27 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-23 09:24:35 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos] (Intento 1)
+2025-12-23 09:25:02 - OK [IT_ZENER TELECOMUNICAZIONE - Movs. proyectos]
+2025-12-23 09:25:14 - Iniciando [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:25:49 - ERROR [EN_ZENER ENCITEL - Movs. proyectos]: Error Menú
+2025-12-23 09:25:50 - OK [IT_ZENER TELECOMUNICAZIONE - Lista Líneas de Certificación Registradas]
+2025-12-23 09:25:52 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-23 09:25:56 - Iniciando [EN_ZENER ENCITEL - Movs. proyectos] (Intento 3)
+2025-12-23 09:26:05 - ERROR [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]: Error Menú
+2025-12-23 09:26:13 - Iniciando [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos] (Intento 2)
+2025-12-23 09:26:21 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-23 09:26:25 - OK [EN_ZENER ENCITEL - Movs. proyectos]
+2025-12-23 09:26:28 - Iniciando [PB_ZENER TELECOM BV - Movs. proyectos] (Intento 1)
+2025-12-23 09:26:37 - Iniciando [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:26:39 - OK [ET_ZENER ENGINEERING TELEKOM - Movs. proyectos]
+2025-12-23 09:26:42 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-23 09:26:56 - OK [PB_ZENER TELECOM BV - Movs. proyectos]
+2025-12-23 09:27:03 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 1)
+2025-12-23 09:27:04 - OK [PB_ZENER TELECOM BV - Lista Líneas de Certificación Registradas]
+2025-12-23 09:27:17 - Iniciando [PE_ZENER PERU - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:28:04 - OK [PE_ZENER PERU - Lista Líneas de Certificación Registradas]
+2025-12-23 09:28:06 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-23 09:33:03 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-23 09:33:11 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 2)
+2025-12-23 09:33:24 - ERROR [PE_ZENER PERU - Movs. proyectos]: Error Menú
+2025-12-23 09:33:31 - Iniciando [PE_ZENER PERU - Movs. proyectos] (Intento 2)
+2025-12-23 09:33:40 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-23 09:33:49 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 1)
+2025-12-23 09:33:58 - OK [PE_ZENER PERU - Movs. proyectos]
+2025-12-23 09:34:11 - Iniciando [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:34:26 - ERROR [PT_CLOUDSENTINIEL - Movs. proyectos]: Error Menú
+2025-12-23 09:34:34 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 2)
+2025-12-23 09:51:40 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-23 09:51:43 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-23 09:52:02 - OK [PT_CLOUDSENTINIEL - Lista Líneas de Certificación Registradas]
+2025-12-23 09:52:09 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos] (Intento 1)
+2025-12-23 09:52:11 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]
+2025-12-23 09:52:24 - Iniciando [RZ_RZT INGENIERÍA Y PROYECTOS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:52:39 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Movs. proyectos]
+2025-12-23 09:52:41 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:52:52 - OK [RZ_RZT INGENIERÍA Y PROYECTOS - Lista Líneas de Certificación Registradas]
+2025-12-23 09:52:59 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:53:32 - OK [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-23 09:53:44 - Iniciando [TL_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:55:56 - OK [TL_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-23 09:55:59 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:56:03 - OK [TL_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-23 09:56:11 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:56:41 - OK [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]
+2025-12-23 09:56:53 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:57:20 - OK [XC_DIGITAL CABLE DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-23 09:57:22 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:57:25 - ERROR [PT_CLOUDSENTINIEL - Movs. proyectos]: Error Menú
+2025-12-23 09:57:33 - Iniciando [PT_CLOUDSENTINIEL - Movs. proyectos] (Intento 2)
+2025-12-23 09:58:01 - OK [PT_CLOUDSENTINIEL - Movs. proyectos]
+2025-12-23 09:58:08 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:58:35 - OK [XL_DIGICALL LEVANTE - Movs. proyectos]
+2025-12-23 09:58:47 - Iniciando [XL_DIGICALL LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 09:59:13 - OK [XL_DIGICALL LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-23 09:59:16 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 09:59:50 - OK [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-23 09:59:57 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 1)
+2025-12-23 10:02:19 - ERROR [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]: Error Menú
+2025-12-23 10:02:26 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 2)
+2025-12-23 10:03:43 - ERROR [XL_DIGICALL LEVANTE - Movs. proyectos]: Error Menú
+2025-12-23 10:03:50 - Iniciando [XL_DIGICALL LEVANTE - Movs. proyectos] (Intento 2)
+2025-12-23 10:04:20 - OK [XL_DIGICALL LEVANTE - Movs. proyectos]
+2025-12-23 10:04:32 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:04:59 - OK [XT_TELECOMUNICACION DE LEVANTE - Lista Líneas de Certificación Registradas]
+2025-12-23 10:05:01 - Iniciando [ZA_ZENER ALARMAS - Movs. proyectos] (Intento 1)
+2025-12-23 10:05:34 - OK [ZA_ZENER ALARMAS - Movs. proyectos]
+2025-12-23 10:05:41 - Iniciando [ZA_ZENER ALARMAS - Movs. proyectos] (Intento 1)
+2025-12-23 10:06:18 - ERROR [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos]: Error Menú
+2025-12-23 10:06:25 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 2)
+2025-12-23 10:06:40 - OK [ZA_ZENER ALARMAS - Movs. proyectos]
+2025-12-23 10:06:53 - Iniciando [ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:08:03 - OK [ZA_ZENER ALARMAS - Lista Líneas de Certificación Registradas]
+2025-12-23 10:08:06 - Iniciando [ZC_ZENER COMUNICACIONES - Movs. proyectos] (Intento 1)
+2025-12-23 10:08:47 - ERROR [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]: Error Menú
+2025-12-23 10:08:55 - Iniciando [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos] (Intento 3)
+2025-12-23 10:09:22 - OK [XC_DIGITAL CABLE DE LEVANTE - Movs. proyectos]
+2025-12-23 10:09:31 - Iniciando [ZC_ZENER COMUNICACIONES - Movs. proyectos] (Intento 1)
+2025-12-23 10:09:34 - OK [ZC_ZENER COMUNICACIONES - Movs. proyectos]
+2025-12-23 10:09:46 - Iniciando [ZC_ZENER COMUNICACIONES - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:12:46 - ERROR [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos]: Error Menú
+2025-12-23 10:12:51 - OK [ZC_ZENER COMUNICACIONES - Lista Líneas de Certificación Registradas]
+2025-12-23 10:12:54 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos] (Intento 1)
+2025-12-23 10:12:55 - Iniciando [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos] (Intento 3)
+2025-12-23 10:13:32 - OK [XT_TELECOMUNICACION DE LEVANTE - Movs. proyectos]
+2025-12-23 10:13:36 - OK [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos]
+2025-12-23 10:13:44 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos] (Intento 1)
+2025-12-23 10:13:50 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:14:28 - OK [ZE_ZEI INSTALACIONES Y PROYECT - Movs. proyectos]
+2025-12-23 10:14:39 - Iniciando [ZN_ZENER NORTE - Movs. proyectos] (Intento 1)
+2025-12-23 10:15:07 - OK [ZN_ZENER NORTE - Movs. proyectos]
+2025-12-23 10:15:25 - ERROR [ZE_ZEI INSTALACIONES Y PROYECT - Lista Líneas de Certificación Registradas]: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff6d88a88e5
+	0x7ff6d88a8940
+	0x7ff6d868165d
+	0x7ff6d86d9a33
+	0x7ff6d86d9d3c
+	0x7ff6d872df67
+	0x7ff6d872ac97
+	0x7ff6d86cac29
+	0x7ff6d86cba93
+	0x7ff6d8bc0640
+	0x7ff6d8bbaf80
+	0x7ff6d8bd96e6
+	0x7ff6d88c5de4
+	0x7ff6d88ced8c
+	0x7ff6d88b2004
+	0x7ff6d88b21b5
+	0x7ff6d8897ee2
+	0x7ffa835d7374
+	0x7ffa850bcc91
+
+2025-12-23 10:15:42 - Iniciando [ZN_ZENER NORTE - Movs. proyectos] (Intento 1)
+2025-12-23 10:15:52 - ERROR [ZC_ZENER COMUNICACIONES - Movs. proyectos]: Error Menú
+2025-12-23 10:15:52 - Iniciando [ZE_ZEI INSTALACIONES Y PROYECT - Lista Líneas de Certificación Registradas] (Intento 2)
+2025-12-23 10:16:20 - OK [ZN_ZENER NORTE - Movs. proyectos]
+2025-12-23 10:16:36 - OK [ZE_ZEI INSTALACIONES Y PROYECT - Lista Líneas de Certificación Registradas]
+2025-12-23 10:16:51 - Iniciando [ZN_ZENER NORTE - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:16:59 - Iniciando [ZC_ZENER COMUNICACIONES - Movs. proyectos] (Intento 2)
+2025-12-23 10:17:27 - Iniciando [ZP_ZENER PLUS - Movs. proyectos] (Intento 1)
+2025-12-23 10:17:27 - OK [ZN_ZENER NORTE - Lista Líneas de Certificación Registradas]
+2025-12-23 10:17:58 - Iniciando [ZP_ZENER PLUS - Movs. proyectos] (Intento 1)
+2025-12-23 10:18:46 - OK [ZP_ZENER PLUS - Movs. proyectos]
+2025-12-23 10:19:12 - Iniciando [ZP_ZENER PLUS - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:20:27 - OK [ZC_ZENER COMUNICACIONES - Movs. proyectos]
+2025-12-23 10:20:30 - Iniciando [ZR_ZENER REDES - Movs. proyectos] (Intento 1)
+2025-12-23 10:21:01 - OK [ZR_ZENER REDES - Movs. proyectos]
+2025-12-23 10:21:09 - Iniciando [ZR_ZENER REDES - Movs. proyectos] (Intento 1)
+2025-12-23 10:21:29 - OK [ZP_ZENER PLUS - Lista Líneas de Certificación Registradas]
+2025-12-23 10:21:43 - Iniciando [ZR_ZENER REDES - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:22:23 - OK [ZR_ZENER REDES - Movs. proyectos]
+2025-12-23 10:22:26 - Iniciando [ZT_ZENER TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-23 10:23:02 - OK [ZR_ZENER REDES - Lista Líneas de Certificación Registradas]
+2025-12-23 10:23:10 - Iniciando [ZT_ZENER TELEKOM - Movs. proyectos] (Intento 1)
+2025-12-23 10:23:24 - OK [ZT_ZENER TELEKOM - Movs. proyectos]
+2025-12-23 10:23:36 - Iniciando [ZT_ZENER TELEKOM - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:24:24 - ERROR [ZP_ZENER PLUS - Movs. proyectos]: Error Menú
+2025-12-23 10:24:31 - Iniciando [ZP_ZENER PLUS - Movs. proyectos] (Intento 2)
+2025-12-23 10:25:48 - OK [ZT_ZENER TELEKOM - Lista Líneas de Certificación Registradas]
+2025-12-23 10:25:51 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos] (Intento 1)
+2025-12-23 10:26:01 - OK [ZT_ZENER TELEKOM - Movs. proyectos]
+2025-12-23 10:26:10 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos] (Intento 1)
+2025-12-23 10:26:20 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos]
+2025-12-23 10:26:32 - Iniciando [ZX_ZENYX INTEGRACIÓN DE XARXES - Lista Líneas de Certificación Registradas] (Intento 1)
+2025-12-23 10:26:37 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Movs. proyectos]
+2025-12-23 10:27:01 - OK [ZX_ZENYX INTEGRACIÓN DE XARXES - Lista Líneas de Certificación Registradas]
+2025-12-23 10:30:55 - ERROR [ZP_ZENER PLUS - Movs. proyectos]: Error Menú
+2025-12-23 10:31:02 - Iniciando [ZP_ZENER PLUS - Movs. proyectos] (Intento 3)
+2025-12-23 10:35:36 - OK [ZP_ZENER PLUS - Movs. proyectos]

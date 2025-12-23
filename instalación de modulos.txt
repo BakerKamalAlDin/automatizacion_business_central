@@ -5,5 +5,7 @@
 "C:\Python_312_Portable\python.exe" -m pip install pyarrow
 "C:\Python_312_Portable\python.exe" -m pip install pandas selenium openpyxl
 
+"C:\Python_312_Portable\python.exe" -m pip install python-calamine
+
 
 "C:\Python_312_Portable\python.exe" -c "import polars; print(polars.__version__)"
