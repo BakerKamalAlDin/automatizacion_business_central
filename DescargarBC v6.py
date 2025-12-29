@@ -269,51 +269,57 @@ def configurar_driver(dir_hilo):
     driver.execute_cdp_cmd("Page.setDownloadBehavior", {"behavior": "allow", "downloadPath": dir_hilo})
     return driver
 
-
-
-def navegar_y_preparar_descarga(driver, wait, url_final, id_hilo, reintentos=3):
+def navegar_y_preparar_descarga(driver, wait, url_final, id_hilo, reintentos=3, timeout_iframe=20):
     """
-    Gestiona la navegación localizando el primer iframe disponible de forma dinámica.
+    Gestiona la navegación y la preparación de descarga.
+    Devuelve True si logra hacer clic en descargar, False si falla.
     """
     for intento in range(1, reintentos + 1):
         try:
             driver.get(url_final)
-            escribir_log(f"[HILO {id_hilo}] Cargando URL, buscando iframe dinámicamente...", consola=True)
 
-            # Esperar a que aparezca al menos un iframe y cambiar a él automáticamente
-            # EC.frame_to_be_available_and_switch_to_it busca por locator, 
-            # usando (By.TAG_NAME, "iframe") capturamos el primero que se renderice.
-            try:
-                wait.until(EC.frame_to_be_available_and_switch_to_it((By.TAG_NAME, "iframe")))
-                escribir_log(f"[HILO {id_hilo}] Iframe detectado y switch realizado.", consola=True)
-            except Exception:
-                escribir_log(f"[HILO {id_hilo}] Tiempo de espera agotado buscando iframe.", consola=True)
+            # Esperar a que el iframe principal de Business Central esté disponible
+            iframe = None
+            for segundo in range(1, timeout_iframe + 1):
+                # Usamos el XPath específico que mencionaste para BC dinámico
+                iframes = driver.find_elements(By.XPATH, "/html/body/div[2]/div[2]/div[1]/div/div[1]/div/iframe")
+                if iframes:
+                    iframe = iframes[0]
+                    break
+                
+                # Log de progreso cada 5 segundos para no saturar
+                if segundo % 5 == 0:
+                    escribir_log(f"[HILO {id_hilo}] Esperando iframe... {segundo}/{timeout_iframe}s", consola=True)
+                time.sleep(1)
+
+            if iframe:
+                driver.switch_to.frame(iframe)
+                
+                # 1. Localizar botón "Abrir en Excel"
+                xpath_menu = "/html/body/div[1]/div[2]/form/div/div[2]/div[2]/div/div/nav/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/button"
+                try:
+                    btn_menu = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))
+                except:
+                    # Fallback por si cambia levemente el DOM
+                    btn_menu = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@title, 'Abrir en Excel')]")))
+                
+                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn_menu)
+                time.sleep(1)
+                driver.execute_script("arguments[0].click();", btn_menu)
+
+                # 2. Localizar botón final de descarga en el desplegable
+                xpath_descarga = "/html/body/div[1]/div[2]/form/div/div[2]/div[5]/div/div/div/div[3]/div/div/ul/li/button"
+                btn_desc = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_descarga)))
+                driver.execute_script("arguments[0].click();", btn_desc)
+                
+                return True  # Éxito: clic de descarga realizado
+
+            else:
+                # Si llegamos aquí, el iframe no apareció en este intento
+                escribir_log(f"[HILO {id_hilo}] Intento {intento}: iframe NO apareció. URL: {url_final}", consola=True)
                 if intento < reintentos:
                     driver.refresh()
-                    continue
-                return False
-
-            # --- Localización de botones dentro del iframe ---
-            
-            # 1. Botón "Abrir en Excel"
-            # Usamos el XPath dinámico que mencionaste anteriormente como prioridad
-            xpath_menu = "/html/body/div[1]/div[2]/form/div/div[2]/div[2]/div/div/nav/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/button"
-            try:
-                btn_menu = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))
-            except:
-                # Fallback: buscar por el título o texto del botón si el XPath absoluto falla
-                btn_menu = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@title, 'Abrir en Excel')]")))
-            
-            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn_menu)
-            time.sleep(1)
-            driver.execute_script("arguments[0].click();", btn_menu)
-
-            # 2. Botón final de descarga en el desplegable
-            xpath_descarga = "/html/body/div[1]/div[2]/form/div/div[2]/div[5]/div/div/div/div[3]/div/div/ul/li/button"
-            btn_desc = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_descarga)))
-            driver.execute_script("arguments[0].click();", btn_desc)
-            
-            return True 
+                    time.sleep(5)
 
         except Exception as e:
             escribir_log(f"[HILO {id_hilo}] Error en navegación (Intento {intento}): {str(e)}", consola=True)
@@ -321,8 +327,7 @@ def navegar_y_preparar_descarga(driver, wait, url_final, id_hilo, reintentos=3):
                 driver.refresh()
                 time.sleep(5)
 
-    return False
-
+    return False # Fallaron todos los reintentos
 
 def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, filtros_proyectos, max_intentos_empresa=2):
     inicio_empresa = datetime.now()
