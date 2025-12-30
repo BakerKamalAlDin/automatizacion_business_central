@@ -43,6 +43,10 @@ ruta_empresas_txt = os.path.join(DIRECTORIO_BASE, "Empresas.txt")
 ruta_csv_proyectos = os.path.join(DIRECTORIO_BASE, "Proyecto a borrar.csv")
 ruta_dp_responsable = os.path.join(DIRECTORIO_BASE, "DP_RESPONSABLE.xlsx")
 ruta_log = os.path.join(DIRECTORIO_BASE, "log_proceso.txt")
+ruta_log_enlaces = os.path.join(DIRECTORIO_BASE, "debug_enlaces.txt")
+
+# Usaremos el mismo log_lock que ya tienes definido o uno nuevo
+enlaces_lock = threading.Lock()
 
 # Carpeta principal de resultados (dentro de la carpeta del script)
 ruta_base_bc = os.path.join(DIRECTORIO_BASE, "ArchivosBC")
@@ -77,6 +81,12 @@ log_lock = threading.Lock()
 df_responsables_global = None
 
 
+def registrar_enlace_intento(empresa, categoria, url):
+    linea = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} | Empresa: {empresa} | Cat: {categoria} | URL: {url}\n"
+    with enlaces_lock:
+        with open(ruta_log_enlaces, "a", encoding="utf-8") as f:
+            f.write(linea)
+
 def limpiar_nombre_archivo(nombre):
     limpio = re.sub(r'[\\/*?:"<>|]', "", nombre)
     return limpio.strip()
@@ -85,21 +95,30 @@ def inicializar_entorno():
     """Crea estructura, limpia temporales y carga tablas auxiliares."""
     global df_responsables_global
     
-    # Añadida ruta_csv_project a la creación de carpetas iniciales (por seguridad)
-    for carpeta in [ruta_base_bc, ruta_excel_base, ruta_csv_base, ruta_errores, ruta_csv_project]:
+    # 1. RESET DE LOGS: Limpiamos los archivos para que no sean acumulativos
+    # Al abrir en modo 'w' eliminamos el contenido previo de ejecuciones pasadas
+    for archivo_log in [ruta_log, ruta_log_enlaces]:
+        with open(archivo_log, "w", encoding="utf-8") as f:
+            f.write(f"--- INICIO DE PROCESO: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ---\n")
+    
+    # 2. GESTIÓN DE DIRECTORIOS: Crear carpetas necesarias
+    carpetas = [ruta_base_bc, ruta_excel_base, ruta_csv_base, ruta_errores, ruta_csv_project]
+    for carpeta in carpetas:
         os.makedirs(carpeta, exist_ok=True)
     
+    # Limpiar temporales de hilos de ejecuciones anteriores
     if os.path.exists(dir_base_hilos):
         shutil.rmtree(dir_base_hilos, ignore_errors=True)
     os.makedirs(dir_base_hilos, exist_ok=True)
 
+    # 3. CARGA DE TABLAS MAESTRAS
     escribir_log("Cargando tabla maestra de Responsables...")
     try:
         if os.path.exists(ruta_dp_responsable):
-            # Usamos calamine aquí también para carga ultrarrápida
+            # Prioridad motor calamine para velocidad
             try:
                 df_resp = pd.read_excel(ruta_dp_responsable, engine="calamine")
-            except:
+            except Exception:
                 df_resp = pd.read_excel(ruta_dp_responsable, engine="openpyxl")
 
             df_resp = df_resp.rename(columns={"COD. DP": "DP_KEY", "NOMBRE ENCARGADO": "RESPONSABLE_LOOKUP"})
@@ -269,8 +288,6 @@ def configurar_driver(dir_hilo):
     driver.execute_cdp_cmd("Page.setDownloadBehavior", {"behavior": "allow", "downloadPath": dir_hilo})
     return driver
 
-
-
 def navegar_y_preparar_descarga(driver, wait, url_final, id_hilo, reintentos=3):
     """
     Gestiona la navegación localizando el primer iframe disponible de forma dinámica.
@@ -323,7 +340,6 @@ def navegar_y_preparar_descarga(driver, wait, url_final, id_hilo, reintentos=3):
 
     return False
 
-
 def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, filtros_proyectos, max_intentos_empresa=2):
     inicio_empresa = datetime.now()
     clean_emp = limpiar_nombre_archivo(empresa).replace(" ", "_")
@@ -336,8 +352,7 @@ def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, 
         driver = None
         try:
             driver = configurar_driver(dir_hilo)
-            # Aumentamos el timeout de carga de página a 5 min por si la web va lenta
-            driver.set_page_load_timeout(300) 
+            driver.set_page_load_timeout(300)  # Timeout extenso por si BC va lento
             wait = WebDriverWait(driver, 60)
 
             if not realizar_login(driver, wait, usuario, password):
@@ -348,119 +363,92 @@ def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, 
                 categoria_clean = limpiar_nombre_archivo(categoria_raw)
                 exito_enlace = False
 
+                # Preparar rutas de salida
                 dir_destino_excel = os.path.join(ruta_excel_base, categoria_clean)
                 dir_destino_csv = os.path.join(ruta_csv_base, categoria_clean)
                 os.makedirs(dir_destino_excel, exist_ok=True)
                 os.makedirs(dir_destino_csv, exist_ok=True)
 
-                filtro_url = filtros_proyectos.get(empresa, "*")
-                empresa_encoded = urllib.parse.quote(
-                    empresa.strip(), safe="", encoding="utf-8"
-                )
+                # --- CONSTRUCCIÓN DE LA URL ---
+                filtro_url = filtros_proyectos.get(empresa, None)  # None si no hay proyectos
+                empresa_encoded = urllib.parse.quote(empresa.strip(), safe="", encoding="utf-8")
+                url_base = tarea["url"].strip().replace("empresas.txt", empresa_encoded)
 
-                url_final = (
-                    tarea["url"]
-                    .strip()
-                    .replace("empresas.txt", empresa_encoded)
-                    .replace("Proyecto a borrar.csv", filtro_url)
-                )
+                if filtro_url and filtro_url.strip():  # Caso normal: hay proyectos
+                    url_final = url_base.replace("Proyecto a borrar.csv", filtro_url)
+                else:  # Caso sin proyectos: eliminar la parte Job No. del filter
+                    # Eliminar exactamente la parte que genera problemas
+                    url_final = re.sub(
+                        r"%27Job%20Ledger%20Entry%27\.%27Job%20No\.%27%20IS%20%27%3c%3eProyecto a borrar\.csv%27%20AND%20",
+                        "",
+                        url_base
+                    )
 
-                escribir_log(
-                    f"[HILO {id_hilo}] INICIO TAREA: {categoria_raw}",
-                    consola=True,
-                )
+                # Registro de debug para detectar errores en Italia u otras
+                registrar_enlace_intento(empresa, categoria_raw, url_final)
 
+                escribir_log(f"[HILO {id_hilo}] INICIO TAREA: {categoria_raw}", consola=True)
+
+                # Intentos por cada tarea (enlace)
                 for intento_tarea in range(1, 3):
                     try:
                         ts = datetime.now().strftime("%H%M%S_%f")[:-3]
 
-                        if not navegar_y_preparar_descarga(
-                            driver, wait, url_final, id_hilo
-                        ):
-                            raise Exception(
-                                "No se pudo interactuar con el botón de descarga"
-                            )
+                        if not navegar_y_preparar_descarga(driver, wait, url_final, id_hilo):
+                            raise Exception("No se pudo interactuar con el botón de descarga")
 
-                        escribir_log(
-                            f"[HILO {id_hilo}] Descarga solicitada. "
-                            f"Esperando Excel (Máx. 1 hora para archivos grandes)...",
-                            consola=True,
-                        )
+                        escribir_log(f"[HILO {id_hilo}] Esperando Excel (Máx. 1h)...", consola=True)
 
                         archivo_descargado = None
                         inicio_espera = time.time()
-                        # Tiempo máximo para que el servidor genere el archivo (1 hora)
                         tiempo_maximo_generacion = 3600 
 
+                        # Bucle de espera del archivo físico
                         while time.time() - inicio_espera < tiempo_maximo_generacion:
                             archivos = os.listdir(dir_hilo)
 
-                            # Si hay descarga activa (.crdownload), reseteamos el reloj
-                            # Esto permite que archivos de GBs bajen sin que el script aborte
+                            # Si hay descarga activa, reseteamos el timeout
                             if any(f.endswith(".crdownload") or f.endswith(".tmp") for f in archivos):
-                                # Reseteamos el contador: mientras baje, seguimos esperando
                                 inicio_espera = time.time()
                                 time.sleep(10)
                                 continue
 
-                            xlsx = [
-                                f
-                                for f in archivos
-                                if f.endswith(".xlsx") and not f.startswith("~$")
-                            ]
+                            xlsx = [f for f in archivos if f.endswith(".xlsx") and not f.startswith("~$")]
 
                             if xlsx:
                                 temp_path = os.path.join(dir_hilo, xlsx[0])
-                                # Verificamos que el archivo esté cerrado y sea válido
-                                if (
-                                    os.path.getsize(temp_path) > 1024
-                                    and archivo_estable(temp_path)
-                                ):
+                                if os.path.getsize(temp_path) > 1024 and archivo_estable(temp_path):
                                     archivo_descargado = temp_path
                                     break
-
                             time.sleep(5)
 
                         if not archivo_descargado:
-                            raise Exception("Timeout: El servidor no envió el archivo tras 1 hora")
+                            raise Exception("Timeout: El servidor no envió el archivo")
 
+                        # Mover y procesar
                         nombre_unico = f"{clean_emp}_{categoria_clean}_{ts}"
-                        ruta_excel_final = os.path.join(
-                            dir_destino_excel, nombre_unico + ".xlsx"
-                        )
-
-                        time.sleep(2) # Pausa de seguridad para Windows
+                        ruta_excel_final = os.path.join(dir_destino_excel, nombre_unico + ".xlsx")
+                        
+                        time.sleep(2)
                         shutil.move(archivo_descargado, ruta_excel_final)
 
-                        # Procesamiento de datos
+                        # Lectura de datos
                         try:
                             df_raw = pd.read_excel(ruta_excel_final, engine="calamine")
                         except:
                             df_raw = pd.read_excel(ruta_excel_final, engine="openpyxl")
 
                         if len(df_raw) > 0:
-                            df_transformado = transformar_datos_powerquery(
-                                df_raw, categoria_raw, empresa
-                            )
-
+                            df_transformado = transformar_datos_powerquery(df_raw, categoria_raw, empresa)
                             if df_transformado is not None:
-                                ruta_csv_final = os.path.join(
-                                    dir_destino_csv, nombre_unico + ".csv"
-                                )
-                                df_transformado.to_csv(
-                                    ruta_csv_final,
-                                    sep=";",
-                                    index=False,
-                                    encoding="utf-8-sig",
-                                )
-                                escribir_log(
-                                    f"[HILO {id_hilo}] FIN OK '{categoria_raw}' -> "
-                                    f"{len(df_transformado)} filas.",
-                                    consola=True,
-                                )
+                                ruta_csv_final = os.path.join(dir_destino_csv, nombre_unico + ".csv")
+                                df_transformado.to_csv(ruta_csv_final, sep=";", index=False, encoding="utf-8-sig")
+                                escribir_log(f"[HILO {id_hilo}] OK '{categoria_raw}' -> {len(df_transformado)} filas.", consola=True)
+                        else:
+                            escribir_log(f"[HILO {id_hilo}] ADVERTENCIA: El Excel para {empresa} llegó VACÍO.", consola=True)
 
                         exito_enlace = True
-                        break  # Tarea completada con éxito
+                        break 
 
                     except Exception as e_tarea:
                         escribir_log(f"[HILO {id_hilo}] ERROR TAREA {categoria_raw}: {e_tarea}", consola=True)
@@ -475,6 +463,8 @@ def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, 
 
         except Exception as e_emp:
             escribir_log(f"[HILO {id_hilo}] ERROR CRÍTICO EN EMPRESA '{empresa}': {e_emp}", consola=True)
+            if intento_empresa < max_intentos_empresa:
+                time.sleep(15)  # Pausa antes de reintentar la empresa
 
         finally:
             if driver:
@@ -635,13 +625,12 @@ def actualizar_excel_powerquery(ruta_excel):
 #fin actualizar excel
 
 if __name__ == "__main__":
+    # 1. Configuración inicial y logs
     inicializar_entorno()
     inicio_global = datetime.now()
     
-    # --- 0. CONFIGURACIÓN DE RUTA DEL INFORME FINAL ---
-    # Usamos la variable ruta_actualizar_excel_txt definida en la configuración global
+    # 2. Localización del informe final a actualizar
     ruta_informe_final = None
-
     if os.path.exists(ruta_actualizar_excel_txt):
         try:
             with open(ruta_actualizar_excel_txt, "r", encoding="utf-8") as f:
@@ -652,78 +641,62 @@ if __name__ == "__main__":
         except Exception as e:
             escribir_log(f"Error leyendo actualizarExcel.txt: {e}", consola=True)
     else:
-        escribir_log("AVISO: No se encontró 'actualizarExcel.txt'. No se actualizará el informe final.", consola=True)
+        escribir_log("AVISO: No se encontró 'actualizarExcel.txt'.", consola=True)
 
-    # Nota: Si no definiste DIRECTORIO_BASE arriba, cambia esto por un texto fijo.
-    try:
-        ruta_base_print = DIRECTORIO_BASE
-    except NameError:
-        ruta_base_print = "Ruta Fija (Legacy)"
-
-    print(f"=== INICIO PROCESO (Ruta Base: {ruta_base_print}) ===")
+    print(f"=== INICIO PROCESO (Ruta Base: {DIRECTORIO_BASE}) ===")
     print(f"Hora de inicio: {inicio_global.strftime('%H:%M:%S')}")
 
     try:
-        # 1. Carga de credenciales
+        # 3. Carga de credenciales y parámetros
         if not os.path.exists(ruta_usuario_txt):
-            raise FileNotFoundError(f"Falta 'usuarioContraseña.txt' en: {ruta_usuario_txt}")
+            raise FileNotFoundError(f"Falta 'usuarioContraseña.txt'")
             
         with open(ruta_usuario_txt, "r", encoding="utf-8") as f:
-            lineas = f.readlines()
+            lineas = [l.strip() for l in f.readlines() if l.strip()]
             if len(lineas) < 2:
-                raise ValueError("El archivo de usuario/contraseña no tiene 2 líneas completas.")
-            usuario_bc = lineas[0].strip()
-            password_bc = lineas[1].strip()
+                raise ValueError("Credenciales incompletas en el archivo TXT.")
+            usuario_bc, password_bc = lineas[0], lineas[1]
         
-        # 2. Carga de Listas (Empresas y Enlaces)
-        if not os.path.exists(ruta_empresas_txt) or not os.path.exists(ruta_enlaces_txt):
-             raise FileNotFoundError("Faltan archivos de configuración (Empresas.txt o enlaces.txt).")
-
         empresas = sorted(list(set([l.strip() for l in open(ruta_empresas_txt, "r", encoding="utf-8") if l.strip()])))
         enlaces_raw = [l.strip() for l in open(ruta_enlaces_txt, "r", encoding="utf-8") if l.strip()]
 
-        # 3. Limpieza de carpetas de trabajo
+        # 4. Limpieza de carpetas de trabajo (Excel y CSV temporales)
         limpiar_directorio_recursivo(ruta_excel_base)
         limpiar_directorio_recursivo(ruta_csv_base)
 
-        # 4. Preparación de Filtros de Proyectos
+        # 5. Preparación de Filtros de Proyectos (Job No.)
         filtros_proyectos = {}
         if os.path.exists(ruta_csv_proyectos):
             try:
-                # Lectura flexible del CSV de filtros
+                # Lectura automática del delimitador (coma o punto y coma)
                 df_filtros = pd.read_csv(ruta_csv_proyectos, sep=None, engine='python', encoding='utf-8-sig')
                 for _, row in df_filtros.iterrows():
-                    # Asumimos columna 0 = Empresa, columna 1 = Proyecto
                     emp = str(row.iloc[0]).strip()
                     proy = str(row.iloc[1]).strip()
                     if emp and proy: 
                         filtros_proyectos.setdefault(emp, []).append(proy)
+                
+                # Formatear filtros para la URL de Business Central
+                sep_url = "%26%3c%3e" # Representa el operador &<>
+                for emp in filtros_proyectos:
+                    filtros_proyectos[emp] = sep_url.join(filtros_proyectos[emp])
             except Exception as e:
-                escribir_log(f"Error cargando filtros de proyectos: {e}")
+                escribir_log(f"Error procesando CSV de filtros: {e}")
 
-        # Formatear filtros para URL (%26%3c%3e es el separador &<> de BC)
-        sep_url = "%26%3c%3e"
-        for emp in filtros_proyectos:
-            filtros_proyectos[emp] = sep_url.join(filtros_proyectos[emp])
+        # 6. Mapeo de Tareas (URL + Categoría)
+        tareas_base = [{"url": enlaces_raw[i], "prefijo": enlaces_raw[i+1]} 
+                       for i in range(0, len(enlaces_raw) - 1, 2)]
 
-        # 5. Estructurar tareas (URL + Categoría)
-        tareas_base = []
-        for i in range(0, len(enlaces_raw) - 1, 2):
-            tareas_base.append({
-                "url": enlaces_raw[i], 
-                "prefijo": enlaces_raw[i+1]
-            })
-
-        # 6. Ejecución Paralela (Hilos)
-        print(f"[*] Lanzando ThreadPool para {len(empresas)} empresas...")
-        # Ajusta max_workers según la potencia de tu PC (3 es conservador y seguro)
+        # 7. Ejecución Paralela con ThreadPoolExecutor
+        print(f"[*] Lanzando hilos para {len(empresas)} empresas...")
+        # Nota: max_workers=3 es ideal para no saturar la sesión de BC
         with ThreadPoolExecutor(max_workers=3) as executor:
-            futuros = {executor.submit(
-                        procesar_empresa_completa, 
-                        idx + 1, emp_nombre, 
-                        usuario_bc, password_bc, 
-                        tareas_base, filtros_proyectos
-                    ): emp_nombre for idx, emp_nombre in enumerate(empresas)}
+            futuros = {
+                executor.submit(
+                    procesar_empresa_completa, 
+                    idx + 1, emp, usuario_bc, password_bc, tareas_base, filtros_proyectos
+                ): emp for idx, emp in enumerate(empresas)
+            }
 
             for fut in futuros:
                 emp_nombre = futuros[fut]
@@ -731,27 +704,24 @@ if __name__ == "__main__":
                     resultado = fut.result()
                     escribir_log(f"Hilo {emp_nombre} finalizado: {resultado.get('status')}", consola=True)
                 except Exception as e:
-                    escribir_log(f"[ERROR CRÍTICO] Hilo {emp_nombre} falló: {e}", consola=True)
+                    escribir_log(f"[ERROR CRÍTICO] {emp_nombre} falló: {e}", consola=True)
 
-        # 7. Consolidación de archivos
+        # 8. Consolidación de archivos (Generar CSVs únicos por categoría)
         consolidar_archivos_por_categoria()
         
-        # 8. Actualizar el informe Excel final (Power Query)
+        # 9. Actualización Automática de Power Query
         if ruta_informe_final and os.path.exists(ruta_informe_final):
-            escribir_log(f"Iniciando actualización de Excel: {ruta_informe_final}", consola=True)
-            exito = actualizar_excel_powerquery(ruta_informe_final)
-            if exito:
+            escribir_log(f"Actualizando Excel final...", consola=True)
+            if actualizar_excel_powerquery(ruta_informe_final):
                 escribir_log("Excel actualizado correctamente.", consola=True)
             else:
-                escribir_log("Hubo un problema al actualizar el Excel.", consola=True)
+                escribir_log("Error en la actualización de Power Query.", consola=True)
 
-        # 9. Métricas finales y cierre
+        # 10. Cierre y Métricas
         tiempo_total = datetime.now() - inicio_global
-        print(f"\n=== FIN DEL PROCESO: {datetime.now().strftime('%H:%M:%S')} ===")
-        print(f"Tiempo total de ejecución: {tiempo_total}")
-        escribir_log(f"PROCESO COMPLETO FINALIZADO. Tiempo total: {tiempo_total}", consola=True)
+        print(f"\n=== PROCESO FINALIZADO EN: {tiempo_total} ===")
+        escribir_log(f"EJECUCIÓN EXITOSA. Total: {tiempo_total}", consola=True)
 
     except Exception as e:
-        print(f"\n[FATAL ERROR MAIN] {e}")
+        escribir_log(f"ERROR FATAL EN MAIN: {e}", consola=True)
         traceback.print_exc()
-        escribir_log(f"FATAL MAIN: {e}", consola=True)
