@@ -1,0 +1,37 @@
+Crear Calendar y en diagrama unir el Date (1) a Fecha registro (*)
+
+En Calendar (Para ordenar MMM-YYYY)
+crear Columna OrdenMes  --> =[Year] * 100 + [Month Number]
+
+elegir MM-YYYY  -> En Inicio -> Ordenar por columna: Ordenar Columna  MMM-YYYY  Por OrdenMes
+
+
+en la tabla BC_MAESTRO_FINAL:
+	Area de Calculo:
+
+Producción Acumulada:=CALCULATE(
+    [Suma de PRODUCCIÓN];
+    FILTER(
+        ALL('Calendar'[Date]);
+        Calendar[Date] <= MAX(Calendar[Date])
+        && Calendar[Date] >= MINX(ALL(BC_MAESTRO_FINAL); BC_MAESTRO_FINAL[Fecha registro])
+    )
+)
+
+Facturación Acumulada:=CALCULATE(
+    [Suma de FACTURACIÓN];
+    FILTER(
+        ALL(Calendar[Date]);
+        Calendar[Date] <= MAX(Calendar[Date])
+        && Calendar[Date] >= MINX(ALL(BC_MAESTRO_FINAL); BC_MAESTRO_FINAL[Fecha registro])
+    )
+)
+
+OC Acumulada:=CALCULATE(
+    [Suma de O.C];
+    FILTER(
+        ALL(Calendar[Date]);
+        Calendar[Date] <= MAX(Calendar[Date])
+        && Calendar[Date] >= MINX(ALL(BC_MAESTRO_FINAL); BC_MAESTRO_FINAL[Fecha registro])
+    )
+)

@@ -1,0 +1,85 @@
+let
+    // 1. Conectamos a la carpeta
+    Origen = Folder.Files("C:\ficheros python\ArchivosBC\csvProject"), 
+
+    // 2. Filtramos archivos
+    FiltroArchivos = Table.SelectRows(Origen, each 
+        ([Name] = "Lista Líneas de Certificación Registradas Unidos.csv" or 
+         [Name] = "Movs. proyectos Unidos.csv")
+    ),
+
+    // 3. Transformación de CSV
+    Transformar = Table.AddColumn(FiltroArchivos, "ContenidoPersonalizado", each 
+        Csv.Document([Content], [Delimiter=";", Columns=41, Encoding=65001, QuoteStyle=QuoteStyle.None])
+    ),
+
+    RemoverColumnas = Table.SelectColumns(Transformar, {"ContenidoPersonalizado"}),
+
+    ExpandirTablas = Table.ExpandTableColumn(RemoverColumnas, "ContenidoPersonalizado", 
+        {"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7", "Column8", "Column9", "Column10", "Column11", "Column12", "Column13", "Column14", "Column15", "Column16", "Column17", "Column18", "Column19", "Column20", "Column21", "Column22", "Column23", "Column24", "Column25", "Column26", "Column27", "Column28", "Column29", "Column30", "Column31", "Column32", "Column33", "Column34", "Column35", "Column36", "Column37", "Column38", "Column39", "Column40", "Column41"}
+    ),
+
+    PromocionarCabeceras = Table.PromoteHeaders(ExpandirTablas, [PromoteAllScalars=true]),
+
+    FiltrarCabecerasRepetidas = Table.SelectRows(PromocionarCabeceras, each ([EMPRESA] <> "EMPRESA")),
+
+    // 4. Añadimos la columna de País
+    AgregarPais = Table.AddColumn(FiltrarCabecerasRepetidas, "País", each 
+        let 
+            Cod = Text.Start([EMPRESA], 2)
+        in
+            if Cod = "AU" then "Chile"
+            else if Cod = "PE" then "Perú"
+            else if Cod = "ZT" then "Alemania"
+            else if Cod = "IT" then "Italia"
+            else if Cod = "PB" then "Países Bajos"
+            else if Cod = "PT" then "Portugal"
+            else "España" 
+    ),
+
+    // --- BLOQUE 5: CÁLCULO DE COLUMNAS EN EUROS ---
+    PreTipadoNumerico = Table.TransformColumnTypes(AgregarPais, {
+        {"PRODUCCIÓN", type number}, {"FACTURACIÓN", type number}, {"O.C", type number}
+    }, "en-US"),
+
+    ColumnasEuros = Table.AddColumn(PreTipadoNumerico, "CalculosEuros", each 
+        let 
+            tasa = if [País] = "Perú" then 4.04 
+                   else if [País] = "Chile" then 1020.28 
+                   else 1
+        in [
+            ProdEuro = [PRODUCCIÓN] / tasa,
+            FactEuro = [FACTURACIÓN] / tasa,
+            OCEuro   = [O.C] / tasa
+        ]
+    ),
+
+    ExpandirEuros = Table.ExpandRecordColumn(ColumnasEuros, "CalculosEuros", 
+        {"ProdEuro", "FactEuro", "OCEuro"}, 
+        {"PRODUCCIÓN €", "FACTURACIÓN €", "O.C €"}
+    ),
+
+    // --- BLOQUE 6: REORDENAR (Ahora las enviamos al final) ---
+    ColumnasNombres = Table.ColumnNames(ExpandirEuros),
+    // Definimos las columnas que queremos mover (incluyo País para que no estorbe si quieres que vaya al final también)
+    ColumnasAMover = {"PRODUCCIÓN €", "FACTURACIÓN €", "O.C €"}, 
+    // Creamos el nuevo orden: Primero el resto, luego las de Euros
+    OrdenFinal = List.RemoveItems(ColumnasNombres, ColumnasAMover) & ColumnasAMover,
+    Reordenar = Table.ReorderColumns(ExpandirEuros, OrdenFinal),
+
+    // 7. Tipado final
+    Tipos = Table.TransformColumnTypes(Reordenar, {
+        {"País", type text},
+        {"Fecha registro", type date},
+        {"Ejercicio", Int64.Type},
+        {"PRODUCCIÓN", type number},
+        {"FACTURACIÓN", type number},
+        {"O.C", type number},
+        {"PRODUCCIÓN €", type number},
+        {"FACTURACIÓN €", type number},
+        {"O.C €", type number},
+        {"PRECIO UNIDAD", type number},
+        {"Cantidad producción actual", type number}
+    }, "en-US")
+in
+    Tipos

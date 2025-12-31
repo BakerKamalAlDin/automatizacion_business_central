@@ -112,7 +112,7 @@ def inicializar_entorno():
     os.makedirs(dir_base_hilos, exist_ok=True)
 
     # 3. CARGA DE TABLAS MAESTRAS
-    escribir_log("Cargando tabla maestra de Responsables...")
+    escribir_log("Cargando tabla maestr a de Responsables...")
     try:
         if os.path.exists(ruta_dp_responsable):
             # Prioridad motor calamine para velocidad
@@ -122,7 +122,7 @@ def inicializar_entorno():
                 df_resp = pd.read_excel(ruta_dp_responsable, engine="openpyxl")
 
             df_resp = df_resp.rename(columns={"COD. DP": "DP_KEY", "NOMBRE ENCARGADO": "RESPONSABLE_LOOKUP"})
-            df_resp["DP_KEY"] = df_resp["DP_KEY"].astype(str).str.strip()
+             
             df_responsables_global = df_resp[["DP_KEY", "RESPONSABLE_LOOKUP"]]
             escribir_log(f"Tabla Responsables cargada: {len(df_responsables_global)} filas.")
         else:
