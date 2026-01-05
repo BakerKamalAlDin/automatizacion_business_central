@@ -12,6 +12,7 @@ import glob
 import pandas as pd
 import numpy as np
 import traceback
+
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 from selenium import webdriver
@@ -340,131 +341,187 @@ def navegar_y_preparar_descarga(driver, wait, url_final, id_hilo, reintentos=3):
 
     return False
 
-def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, filtros_proyectos, max_intentos_empresa=2):
-    inicio_empresa = datetime.now()
+# ==========================================
+# 1. BLOQUE DE CONSTRUCCIÓN DE URL
+# ==========================================
+
+def preparar_url_dinamica(tarea, empresa, filtro_url):
+    # 1. Construcción base
+    empresa_encoded = urllib.parse.quote(empresa.strip(), safe="", encoding="utf-8")
+    url_base = tarea["url"].strip().replace("empresas.txt", empresa_encoded)
+
+    # ---------------------------------------------------------
+    # CASO A: INYECCIÓN NORMAL (Si hay filtro real)
+    # ---------------------------------------------------------
+    if filtro_url and filtro_url.strip():
+        return url_base.replace("Proyecto a borrar.csv", filtro_url)
+
+    # ---------------------------------------------------------
+    # CASO B: LIMPIEZA DE "PROYECTO A BORRAR" (Si no hay filtro)
+    # ---------------------------------------------------------
+    url_final = url_base
+
+    # DEFINICIÓN DEL PATRÓN ROBUSTO (Ignora nombres de tablas y espacios)
+    # 1. %27.*?%27   -> 'CualquierTabla'
+    # 2. \.          -> .
+    # 3. %27.*?%27   -> 'CualquierCampo'
+    # 4. .*?IS.*?    ->  IS (con o sin espacios codificados)
+    # 5. %27.*?Proyecto... -> '...Proyecto a borrar.csv' (con o sin <>)
+    patron_eliminar = r"%27.*?%27\.%27.*?%27.*?IS.*?%27.*?Proyecto\s+a\s+borrar\.csv%27"
+
+    # PASO 1: Borrar si tiene un AND antes (filtro al final o medio)
+    url_final = re.sub(r"(?:%20|\s)AND(?:%20|\s)" + patron_eliminar, "", url_final, flags=re.IGNORECASE)
+
+    # PASO 2: Borrar si tiene un AND después (filtro al principio)
+    url_final = re.sub(patron_eliminar + r"(?:%20|\s)AND(?:%20|\s)", "", url_final, flags=re.IGNORECASE)
+
+    # PASO 3: Borrar si está solo (único filtro)
+    url_final = re.sub(patron_eliminar, "", url_final, flags=re.IGNORECASE)
+
+    # ---------------------------------------------------------
+    # SANEAMIENTO FINAL
+    # ---------------------------------------------------------
+    # Si tras borrar queda un "filter=" vacío al final, quitarlo
+    url_final = re.sub(r"filter=$", "", url_final)
+    
+    # Limpiar conectores dobles (&&) y finales (? o & sueltos)
+    url_final = url_final.replace("&&", "&").replace("?&", "?")
+    url_final = url_final.rstrip("&").rstrip("?")
+
+    return url_final
+
+
+# ==========================================
+# 2. BLOQUE DE GESTIÓN DE DESCARGA
+# ==========================================
+def esperar_archivo_descargado(dir_hilo, timeout_segundos=3600):
+    """
+    Vigila la carpeta hasta que aparezca un Excel válido y estable.
+    """
+    inicio_espera = time.time()
+    while time.time() - inicio_espera < timeout_segundos:
+        try:
+            archivos = os.listdir(dir_hilo)
+
+            # Reiniciamos si hay descarga activa
+            if any(f.endswith(".crdownload") or f.endswith(".tmp") for f in archivos):
+                inicio_espera = time.time()
+                time.sleep(10)
+                continue
+
+            # Buscar archivo .xlsx válido
+            xlsx = [f for f in archivos if f.endswith(".xlsx") and not f.startswith("~$")]
+            if xlsx:
+                temp_path = os.path.join(dir_hilo, xlsx[0])
+                if os.path.getsize(temp_path) > 1024 and archivo_estable(temp_path):
+                    return temp_path
+        except Exception:
+            pass
+        time.sleep(5)
+    return None
+
+
+# ==========================================
+# 3. BLOQUE DE PROCESAMIENTO DE DATOS
+# ==========================================
+def procesar_y_guardar_datos(ruta_temporal, empresa, categoria_raw, ts):
+    """
+    Mueve archivo a destino final, transforma y genera CSV.
+    """
     clean_emp = limpiar_nombre_archivo(empresa).replace(" ", "_")
+    categoria_clean = limpiar_nombre_archivo(categoria_raw)
+    nombre_unico = f"{clean_emp}_{categoria_clean}_{ts}"
+
+    # Rutas de salida
+    dir_excels = os.path.join(ruta_excel_base, categoria_clean)
+    dir_csvs = os.path.join(ruta_csv_base, categoria_clean)
+    os.makedirs(dir_excels, exist_ok=True)
+    os.makedirs(dir_csvs, exist_ok=True)
+
+    ruta_excel_final = os.path.join(dir_excels, nombre_unico + ".xlsx")
+    ruta_csv_final = os.path.join(dir_csvs, nombre_unico + ".csv")
+
+    time.sleep(2)
+    shutil.move(ruta_temporal, ruta_excel_final)
+
+    # Lectura de Excel con reintento de motor
+    try:
+        df_raw = pd.read_excel(ruta_excel_final, engine="calamine")
+    except:
+        df_raw = pd.read_excel(ruta_excel_final, engine="openpyxl")
+
+    if len(df_raw) > 0:
+        df_trans = transformar_datos_powerquery(df_raw, categoria_raw, empresa)
+        if df_trans is not None:
+            df_trans.to_csv(ruta_csv_final, sep=";", index=False, encoding="utf-8-sig")
+            return len(df_trans)
+    else:
+        escribir_log(f"ADVERTENCIA: El Excel para {empresa} llegó VACÍO.", consola=True)
+
+    return 0
+
+
+# ==========================================
+# 4. FUNCIÓN PRINCIPAL (ORQUESTADOR)
+# ==========================================
+def procesar_empresa_completa(id_hilo, empresa, usuario, password, tareas_base, filtros_proyectos, max_intentos_empresa=2):
+    """
+    Gestiona ciclo completo de una empresa: login -> tareas -> logout.
+    """
     dir_hilo = os.path.join(dir_base_hilos, f"worker_emp_{id_hilo}")
     os.makedirs(dir_hilo, exist_ok=True)
-
     escribir_log(f"[HILO {id_hilo}] >>> INICIANDO EMPRESA: {empresa}", consola=True)
 
     for intento_empresa in range(1, max_intentos_empresa + 1):
         driver = None
         try:
             driver = configurar_driver(dir_hilo)
-            driver.set_page_load_timeout(300)  # Timeout extenso por si BC va lento
             wait = WebDriverWait(driver, 60)
 
             if not realizar_login(driver, wait, usuario, password):
                 raise Exception(f"Fallo login en {empresa}")
 
             for tarea in tareas_base:
-                categoria_raw = tarea["prefijo"]
-                categoria_clean = limpiar_nombre_archivo(categoria_raw)
-                exito_enlace = False
+                filtro_url = filtros_proyectos.get(empresa, None)
+                url_final = preparar_url_dinamica(tarea, empresa, filtro_url)
+                registrar_enlace_intento(empresa, tarea["prefijo"], url_final)
 
-                # Preparar rutas de salida
-                dir_destino_excel = os.path.join(ruta_excel_base, categoria_clean)
-                dir_destino_csv = os.path.join(ruta_csv_base, categoria_clean)
-                os.makedirs(dir_destino_excel, exist_ok=True)
-                os.makedirs(dir_destino_csv, exist_ok=True)
-
-                # --- CONSTRUCCIÓN DE LA URL ---
-                filtro_url = filtros_proyectos.get(empresa, None)  # None si no hay proyectos
-                empresa_encoded = urllib.parse.quote(empresa.strip(), safe="", encoding="utf-8")
-                url_base = tarea["url"].strip().replace("empresas.txt", empresa_encoded)
-
-                if filtro_url and filtro_url.strip():  # Caso normal: hay proyectos
-                    url_final = url_base.replace("Proyecto a borrar.csv", filtro_url)
-                else:  # Caso sin proyectos: eliminar la parte Job No. del filter
-                    # Eliminar exactamente la parte que genera problemas
-                    url_final = re.sub(
-                        r"%27Job%20Ledger%20Entry%27\.%27Job%20No\.%27%20IS%20%27%3c%3eProyecto a borrar\.csv%27%20AND%20",
-                        "",
-                        url_base
-                    )
-
-                # Registro de debug para detectar errores en Italia u otras
-                registrar_enlace_intento(empresa, categoria_raw, url_final)
-
-                escribir_log(f"[HILO {id_hilo}] INICIO TAREA: {categoria_raw}", consola=True)
-
-                # Intentos por cada tarea (enlace)
+                exito_tarea = False
                 for intento_tarea in range(1, 3):
                     try:
                         ts = datetime.now().strftime("%H%M%S_%f")[:-3]
 
+                        # Navegar y descargar
                         if not navegar_y_preparar_descarga(driver, wait, url_final, id_hilo):
                             raise Exception("No se pudo interactuar con el botón de descarga")
 
+                        # Esperar archivo físico
                         escribir_log(f"[HILO {id_hilo}] Esperando Excel (Máx. 1h)...", consola=True)
-
-                        archivo_descargado = None
-                        inicio_espera = time.time()
-                        tiempo_maximo_generacion = 3600 
-
-                        # Bucle de espera del archivo físico
-                        while time.time() - inicio_espera < tiempo_maximo_generacion:
-                            archivos = os.listdir(dir_hilo)
-
-                            # Si hay descarga activa, reseteamos el timeout
-                            if any(f.endswith(".crdownload") or f.endswith(".tmp") for f in archivos):
-                                inicio_espera = time.time()
-                                time.sleep(10)
-                                continue
-
-                            xlsx = [f for f in archivos if f.endswith(".xlsx") and not f.startswith("~$")]
-
-                            if xlsx:
-                                temp_path = os.path.join(dir_hilo, xlsx[0])
-                                if os.path.getsize(temp_path) > 1024 and archivo_estable(temp_path):
-                                    archivo_descargado = temp_path
-                                    break
-                            time.sleep(5)
-
-                        if not archivo_descargado:
+                        archivo_temp = esperar_archivo_descargado(dir_hilo)
+                        if not archivo_temp:
                             raise Exception("Timeout: El servidor no envió el archivo")
 
-                        # Mover y procesar
-                        nombre_unico = f"{clean_emp}_{categoria_clean}_{ts}"
-                        ruta_excel_final = os.path.join(dir_destino_excel, nombre_unico + ".xlsx")
-                        
-                        time.sleep(2)
-                        shutil.move(archivo_descargado, ruta_excel_final)
+                        # Procesar y transformar
+                        filas = procesar_y_guardar_datos(archivo_temp, empresa, tarea["prefijo"], ts)
+                        escribir_log(f"[HILO {id_hilo}] OK '{tarea['prefijo']}' -> {filas} filas.", consola=True)
 
-                        # Lectura de datos
-                        try:
-                            df_raw = pd.read_excel(ruta_excel_final, engine="calamine")
-                        except:
-                            df_raw = pd.read_excel(ruta_excel_final, engine="openpyxl")
-
-                        if len(df_raw) > 0:
-                            df_transformado = transformar_datos_powerquery(df_raw, categoria_raw, empresa)
-                            if df_transformado is not None:
-                                ruta_csv_final = os.path.join(dir_destino_csv, nombre_unico + ".csv")
-                                df_transformado.to_csv(ruta_csv_final, sep=";", index=False, encoding="utf-8-sig")
-                                escribir_log(f"[HILO {id_hilo}] OK '{categoria_raw}' -> {len(df_transformado)} filas.", consola=True)
-                        else:
-                            escribir_log(f"[HILO {id_hilo}] ADVERTENCIA: El Excel para {empresa} llegó VACÍO.", consola=True)
-
-                        exito_enlace = True
+                        exito_tarea = True
                         break 
-
                     except Exception as e_tarea:
-                        escribir_log(f"[HILO {id_hilo}] ERROR TAREA {categoria_raw}: {e_tarea}", consola=True)
+                        escribir_log(f"[HILO {id_hilo}] ERROR TAREA {tarea['prefijo']}: {e_tarea}", consola=True)
                         if intento_tarea < 2:
                             driver.refresh()
                             time.sleep(10)
 
-                if not exito_enlace:
-                    escribir_log(f"[HILO {id_hilo}] FALLO DEFINITIVO EN TAREA: {categoria_raw}", consola=True)
+                if not exito_tarea:
+                    escribir_log(f"[HILO {id_hilo}] FALLO DEFINITIVO EN TAREA: {tarea['prefijo']}", consola=True)
 
             return {"status": "FINISHED", "empresa": empresa}
 
         except Exception as e_emp:
             escribir_log(f"[HILO {id_hilo}] ERROR CRÍTICO EN EMPRESA '{empresa}': {e_emp}", consola=True)
             if intento_empresa < max_intentos_empresa:
-                time.sleep(15)  # Pausa antes de reintentar la empresa
+                time.sleep(15)
 
         finally:
             if driver:
